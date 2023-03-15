@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "736273979753",
+    "project_id": "ctse-plant",
+    "storage_bucket": "ctse-plant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736273979753:android:e33610f516a509511f45f8",
+        "android_client_info": {
+          "package_name": "com.example.plant_shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736273979753-91vuss2qabgbqbnjasdjdqgjj623e6lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJnDePHPX4ibiiKuUCc3lfl5LVtshSmpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736273979753-91vuss2qabgbqbnjasdjdqgjj623e6lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
