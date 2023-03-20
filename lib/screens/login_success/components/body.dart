@@ -9,11 +9,11 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: SizeConfig.screenHeight * 0.02),
+        // const SizedBox(height: 0),
         Center(
           child: Image.asset(
             "assets/images/success.jpg",
-            height: SizeConfig.screenHeight * 0.5, //40%
+            height: SizeConfig.screenHeight * 0.6, //40%
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.fill,
           ),

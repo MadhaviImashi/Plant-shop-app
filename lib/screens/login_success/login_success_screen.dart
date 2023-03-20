@@ -7,9 +7,9 @@ class LoginSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: SizedBox(),
-      ),
+      // appBar: AppBar(
+      //   leading: SizedBox(),
+      // ),
       body: Body(),
     );
   }
