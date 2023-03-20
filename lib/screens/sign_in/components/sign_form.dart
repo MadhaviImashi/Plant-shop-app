@@ -20,7 +20,6 @@ class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  bool? remember = false;
   final List<String?> errors = [];
 
   void addError({String? error}) {
@@ -47,29 +46,6 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          // Row(
-          //   children: [
-          //     Checkbox(
-          //       value: remember,
-          //       activeColor: kPrimaryColor,
-          //       onChanged: (value) {
-          //         setState(() {
-          //           remember = value;
-          //         });
-          //       },
-          //     ),
-          //     Text("Remember me"),
-          //     Spacer(),
-          //     GestureDetector(
-          //       onTap: () => Navigator.pushNamed(
-          //           context, ForgotPasswordScreen.routeName),
-          //       child: Text(
-          //         "Forgot Password",
-          //         style: TextStyle(decoration: TextDecoration.underline),
-          //       ),
-          //     )
-          //   ],
-          // ),
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
@@ -105,16 +81,6 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
-      obscureText: true,
-      // onSaved: (newValue) => password = newValue,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //     removeError(error: kPassNullError);
-      //   } else if (value.length >= 8) {
-      //     removeError(error: kShortPassError);
-      //   }
-      //   return null;
-      // },
       controller: passwordController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -123,7 +89,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
         // If  you are using latest version of flutter then lable text and hint text shown like this
@@ -137,15 +103,6 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      // onSaved: (newValue) => email = newValue,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //     removeError(error: kEmailNullError);
-      //   } else if (emailValidatorRegExp.hasMatch(value)) {
-      //     removeError(error: kInvalidEmailError);
-      //   }
-      //   return null;
-      // },
       controller: emailController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -157,7 +114,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
         // If  you are using latest version of flutter then lable text and hint text shown like this

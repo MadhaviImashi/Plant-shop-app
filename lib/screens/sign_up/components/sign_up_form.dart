@@ -76,15 +76,6 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
-      // onSaved: (newValue) => conform_password = newValue,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //     removeError(error: kPassNullError);
-      //   } else if (value.isNotEmpty && password == conform_password) {
-      //     removeError(error: kMatchPassError);
-      //   }
-      //   conform_password = value;
-      // },
       controller: checkController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -96,7 +87,7 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Confirm Password",
         hintText: "Re-enter your password",
         // If  you are using latest version of flutter then lable text and hint text shown like this
@@ -110,15 +101,6 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      // onSaved: (newValue) => password = newValue,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //     removeError(error: kPassNullError);
-      //   } else if (value.length >= 8) {
-      //     removeError(error: kShortPassError);
-      //   }
-      //   password = value;
-      // },
       controller: passwordController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -130,7 +112,7 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
         // If  you are using latest version of flutter then lable text and hint text shown like this
@@ -146,14 +128,6 @@ class _SignUpFormState extends State<SignUpForm> {
       keyboardType: TextInputType.emailAddress,
       // onSaved: (newValue) => email = newValue,
       controller: emailController,
-      // onChanged: (value) {
-      //   if (value.isNotEmpty) {
-      //     removeError(error: kEmailNullError);
-      //   } else if (emailValidatorRegExp.hasMatch(value)) {
-      //     removeError(error: kInvalidEmailError);
-      //   }
-      //   return null;
-      // },
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kEmailNullError);
@@ -164,7 +138,7 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
         // If  you are using latest version of flutter then lable text and hint text shown like this
@@ -189,6 +163,5 @@ Future<String> createUser(String email, String password) async {
   } catch (e) {
     return 'error';
   }
-
   return "You registered succesfully!";
 }
