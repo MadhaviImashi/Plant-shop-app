@@ -49,20 +49,39 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: () => Navigator.pushNamed(context, '/login'),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
+                icon: SvgPicture.asset(
+                  "assets/icons/Heart Icon.svg",
+                  // ignore: deprecated_member_use
+                  color: MenuState.favourite == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
                 onPressed: () => Navigator.pushNamed(context, '/login'),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Question mark.svg"),
+                icon: SvgPicture.asset(
+                  "assets/icons/Question mark.svg",
+                  // ignore: deprecated_member_use
+                  color: MenuState.tips == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
                 onPressed: () => Navigator.pushNamed(context, '/login'),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Cart Icon.svg"),
+                icon: SvgPicture.asset(
+                  "assets/icons/Cart Icon.svg",
+                  // ignore: deprecated_member_use
+                  color: MenuState.cart == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
                 onPressed: () => Navigator.pushNamed(context, '/login'),
               ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/User Icon.svg",
+                  // ignore: deprecated_member_use
                   color: MenuState.profile == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
