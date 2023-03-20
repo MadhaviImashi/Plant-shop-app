@@ -23,7 +23,7 @@ class Body extends StatelessWidget {
                 Text(
                   "My Account",
                   style: TextStyle(
-                    color: Color.fromARGB(255, 8, 182, 52),
+                    color: Color(0xFF58AF8B),
                     fontSize: getProportionateScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),

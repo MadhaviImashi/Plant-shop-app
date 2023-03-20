@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/size_config.dart';
 
-const kPrimaryColor = Color.fromARGB(255, 5, 168, 59);
+const kPrimaryColor = Color(0xFF58AF8B);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
-  colors: [Color.fromARGB(255, 156, 224, 179), Color.fromARGB(255, 6, 173, 62)],
+  colors: [Color(0xFF6edbae), Color(0xFF58AF8B)],
 );
-const kSecondaryColor = Color.fromARGB(255, 136, 205, 159);
+const kSecondaryColor = Color(0xFF6edbae);
 const kTextColor = Color.fromARGB(255, 47, 47, 47);
 
 const kAnimationDuration = Duration(milliseconds: 200);

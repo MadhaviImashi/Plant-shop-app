@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/no_account_text.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
+import 'package:plant_shop_app/constants.dart';
 import '../../../size_config.dart';
 import 'sign_form.dart';
 
@@ -23,7 +24,7 @@ class Body extends StatelessWidget {
                 Text(
                   "Welcome! ☘️",
                   style: TextStyle(
-                    color: Color.fromARGB(255, 8, 182, 52),
+                    color: kSecondaryColor,
                     fontSize: getProportionateScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),

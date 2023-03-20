@@ -21,7 +21,7 @@ class Body extends StatelessWidget {
                 Text(
                   "Welcome! ☘️",
                   style: TextStyle(
-                    color: Color.fromARGB(255, 8, 182, 52),
+                    color: kSecondaryColor,
                     fontSize: getProportionateScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),
