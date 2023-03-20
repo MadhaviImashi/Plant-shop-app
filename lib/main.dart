@@ -15,7 +15,7 @@ Future<void> main() async {
   );
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Color.fromARGB(255, 198, 222, 202), // set status bar color
+    statusBarColor: Color.fromARGB(255, 167, 211, 193), // set status bar color
   ));
 
   runApp(const MyApp());
@@ -35,6 +35,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (BuildContext context) => SignInScreen(),
         '/register': (BuildContext context) => SignUpScreen(),
+        '/home': (BuildContext context) => SignInScreen(),
+        '/favorites': (BuildContext context) => SignInScreen(),
+        '/cart': (BuildContext context) => SignInScreen(),
+        '/tips': (BuildContext context) => SignInScreen(),
         '/profile': (BuildContext context) => const ProfileScreen(),
         '/profile-update': (BuildContext context) => UpdateProfileScreen(),
       },
