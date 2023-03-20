@@ -41,6 +41,7 @@ dependencies:
   hooks_riverpod: ^2.3.1
   flutter_native_splash: ^2.2.19
   flutter_launcher_icons: "^0.12.0"
+  flutter_svg: ^2.0.4
 
 
 dev_dependencies:
@@ -92,6 +93,7 @@ flutter:
   uses-material-design: true
   assets:
      - assets/images/
+     - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -104,6 +106,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/muli/Muli.ttf
+        - asset: assets/fonts/muli/Muli-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/muli/Muli-Light.ttf
+          weight: 300
   # fonts:
   #   - family: Schyler
   #     fonts:
