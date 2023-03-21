@@ -3,7 +3,7 @@ import 'package:plant_shop_app/components/no_account_text.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
 import 'package:plant_shop_app/constants.dart';
 import '../../../size_config.dart';
-import 'sign_form.dart';
+import 'sign_in_form.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -30,7 +30,7 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
-                SignForm(),
+                SignInForm(),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
