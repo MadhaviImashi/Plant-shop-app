@@ -18,21 +18,23 @@ class _SignUpFormState extends State<SignUpForm> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final checkController = TextEditingController();
-  bool remember = false;
   final List<String?> errors = [];
+  bool circular = false;
 
   void addError({String? error}) {
-    if (!errors.contains(error))
+    if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
+    }
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error))
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -50,24 +52,48 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "Sign Up",
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                // if all are valid then save the user in firebase
-                createUser(emailController.text, passwordController.text)
-                    .then((value) => {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  content: Text(value),
-                                );
-                              }),
-                          Navigator.pushNamed(context, '/login'),
+                setState(() {
+                  circular = true;
+                });
+                try {
+                  UserCredential userCredential = await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text);
+                  print('user created');
+                  // ignore: use_build_context_synchronously
+                  Navigator.pushNamed(context, '/login');
+                } on FirebaseAuthException catch (e) {
+                  setState(() {
+                    circular = false;
+                  });
+                  if (e.code == 'weak-password') {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AlertDialog(
+                            content: Text('Weak password'),
+                          );
                         });
+                  } else if (e.code == 'email-already-in-use') {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AlertDialog(
+                            content: Text(
+                                'An acccount already exists for this email!'),
+                          );
+                        });
+                  }
+                }
               }
             },
           ),
+          SizedBox(height: 20),
+          circular ? const CircularProgressIndicator() : const Text(''),
         ],
       ),
     );
@@ -90,8 +116,6 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: const InputDecoration(
         labelText: "Confirm Password",
         hintText: "Re-enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
@@ -106,7 +130,7 @@ class _SignUpFormState extends State<SignUpForm> {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
-        } else if (value.length < 8) {
+        } else if (value.length < 4) {
           addError(error: kShortPassError);
           return "";
         }
@@ -115,8 +139,6 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: const InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
@@ -141,27 +163,9 @@ class _SignUpFormState extends State<SignUpForm> {
       decoration: const InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
       ),
     );
   }
-}
-
-Future<String> createUser(String email, String password) async {
-  try {
-    UserCredential userCredential = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      return 'week pwd.';
-    } else if (e.code == 'email-already-in-use') {
-      return 'The account already exists for that email.';
-    }
-  } catch (e) {
-    return 'error';
-  }
-  return "You registered succesfully!";
 }

@@ -1,3 +1,5 @@
+// import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/form_error.dart';
@@ -11,29 +13,32 @@ import '../../../size_config.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignForm extends StatefulWidget {
+class SignInForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _SignInFormState createState() => _SignInFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final List<String?> errors = [];
+  bool circular = false;
 
   void addError({String? error}) {
-    if (!errors.contains(error))
+    if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
+    }
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error))
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -50,30 +55,56 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Login",
-            press: () {
+            press: () async {
+              User? user;
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 KeyboardUtil.hideKeyboard(context);
-                // if all are valid then go to Profile page
-                signIn(emailController.text, passwordController.text)
-                    .then((value) => {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
-                              builder: (context) =>
-                                  LoginSuccessScreen() // this should be replaced with Home(user: value))
-                              ))
-                        })
-                    .catchError((err) => {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const AlertDialog(
-                                  content: Text('Login failed'),
-                                );
-                              })
+                setState(() {
+                  circular = true;
+                });
+                try {
+                  UserCredential userCredential =
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+                  user = userCredential.user;
+                  print('user credencials ${user}');
+                  setState(() {
+                    circular = false;
+                  });
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) =>
+                          LoginSuccessScreen() // this should be replaced with Home(user: value))
+                      ));
+                } on FirebaseAuthException catch (e) {
+                  setState(() {
+                    circular = false;
+                  });
+                  if (e.code == 'user-not-found') {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AlertDialog(
+                            content: Text('No user found for this email.'),
+                          );
                         });
+                  } else if (e.code == 'wrong-password') {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AlertDialog(
+                            content: Text('Invalid password.'),
+                          );
+                        });
+                  }
+                }
               }
             },
           ),
+          SizedBox(height: 20),
+          circular ? const CircularProgressIndicator() : const Text(''),
         ],
       ),
     );
@@ -81,6 +112,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      obscureText: true,
       controller: passwordController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -92,8 +124,6 @@ class _SignFormState extends State<SignForm> {
       decoration: const InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
@@ -117,39 +147,9 @@ class _SignFormState extends State<SignForm> {
       decoration: const InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
       ),
     );
   }
-}
-
-Future<User?> signIn(String email, String password) async {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  User? user;
-
-  try {
-    UserCredential userCredential = await auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    user = userCredential.user;
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'user-not-found') {
-      // if (kDebugMode) {
-      //   print('No user found for this email.');
-      // }
-      print('No user found for this email.');
-      return null;
-    } else if (e.code == 'wrong-password') {
-      // if (kDebugMode) {
-      //   print('Invalid password.');
-      // }
-      print('Invalid password.');
-      return null;
-    }
-  }
-  return user;
 }
