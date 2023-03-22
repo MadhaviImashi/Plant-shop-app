@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:plant_shop_app/screens/plants/admin_view.dart';
+import 'package:plant_shop_app/screens/plants/camera_image.dart';
 import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
 import 'package:plant_shop_app/theme.dart';
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
         '/tips': (BuildContext context) => SignInScreen(),
         // '/profile': (BuildContext context) => const ProfileScreen(user: null),
         // '/profile-update': (BuildContext context) => UpdateProfileScreen(),
+        '/admin_home' : (BuildContext context) => const AdminHome(),
+        '/add_plant' : (BuildContext context) => const AddImage(),
       },
     );
   }
