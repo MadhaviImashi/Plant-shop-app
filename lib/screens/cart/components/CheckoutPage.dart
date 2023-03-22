@@ -196,7 +196,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
     );
   }
 }

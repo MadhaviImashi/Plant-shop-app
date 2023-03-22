@@ -284,7 +284,7 @@ class _OrdersPageState extends State<OrdersPage> {
           }
         },
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
     );
   }
 }

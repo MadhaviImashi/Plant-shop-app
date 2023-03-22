@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
         title: const Text("My Cart"),
       ),
       body: CartPage(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.cart),
     );
   }
 }

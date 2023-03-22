@@ -189,7 +189,8 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+      // bottomNavigationBar:
+      //     const CustomBottomNavBar(selectedMenu: MenuState.cart),
     );
   }
 }

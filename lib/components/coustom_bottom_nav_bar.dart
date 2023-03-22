@@ -14,8 +14,7 @@ class CustomBottomNavBar extends StatefulWidget {
   final User? user;
   final MenuState? selectedMenu;
 
-  const CustomBottomNavBar(
-      {super.key, required this.selectedMenu, required this.user});
+  const CustomBottomNavBar({super.key, required this.selectedMenu, this.user});
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
