@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
-import 'package:plant_shop_app/constants.dart';
-import 'package:plant_shop_app/size_config.dart';
+import 'package:plant_shop_app/helper/constants.dart';
+import 'package:plant_shop_app/helper/size_config.dart';
 
 import 'sign_up_form.dart';
 
@@ -12,8 +12,7 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(horizontal: getRelativeScreenWidth(20)),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -22,7 +21,7 @@ class Body extends StatelessWidget {
                   "Welcome! ☘️",
                   style: TextStyle(
                     color: kSecondaryColor,
-                    fontSize: getProportionateScreenWidth(28),
+                    fontSize: getRelativeScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -46,7 +45,7 @@ class Body extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: getRelativeScreenHeight(20)),
                 Text(
                   'CTSE-Assignment by team @Falcon',
                   textAlign: TextAlign.center,
