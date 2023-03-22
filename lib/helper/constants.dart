@@ -21,10 +21,3 @@ final headingStyle = TextStyle(
 );
 
 const defaultDuration = Duration(milliseconds: 250);
-
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(getRelativeScreenWidth(15)),
-    borderSide: BorderSide(color: kTextColor),
-  );
-}
