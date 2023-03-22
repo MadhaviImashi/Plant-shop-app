@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
-import 'package:plant_shop_app/enums.dart';
+import 'package:plant_shop_app/helper/enums.dart';
 
 ///Home component which is stateful and store list of plants
 class UserHome extends StatefulWidget {

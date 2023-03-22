@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
-import 'package:plant_shop_app/contact_us_screen/contact_us_screen.dart';
-import 'package:plant_shop_app/enums.dart';
+import 'package:plant_shop_app/screens/contact_us_screen/contact_us_screen.dart';
+import 'package:plant_shop_app/helper/enums.dart';
 import 'package:plant_shop_app/screens/profile/components/profile_menu.dart';
 import 'package:plant_shop_app/screens/profile/components/profile_pic.dart';
 import 'package:plant_shop_app/screens/update_profile/update_profile_screen.dart';

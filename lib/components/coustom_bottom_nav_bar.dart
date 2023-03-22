@@ -6,8 +6,8 @@ import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 import 'package:plant_shop_app/screens/wishlist/wishlist_screen.dart';
 
-import '../constants.dart';
-import '../enums.dart';
+import '../helper/constants.dart';
+import '../helper/enums.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final User? user;

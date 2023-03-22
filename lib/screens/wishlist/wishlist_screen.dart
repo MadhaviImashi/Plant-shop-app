@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
-import 'package:plant_shop_app/constants.dart';
-import 'package:plant_shop_app/enums.dart';
+import 'package:plant_shop_app/helper/constants.dart';
+import 'package:plant_shop_app/helper/enums.dart';
 
 import 'package:flutter_svg/svg.dart';
-import '../../../size_config.dart';
+import '../../helper/size_config.dart';
 // import './components/favorite_card.dart';
 
 class WishlistScreen extends StatefulWidget {

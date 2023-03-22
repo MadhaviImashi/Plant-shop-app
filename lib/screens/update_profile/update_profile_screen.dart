@@ -6,7 +6,7 @@ import 'package:plant_shop_app/components/default_button.dart';
 import 'package:plant_shop_app/components/form_error.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 
-import '../../../size_config.dart';
+import '../../helper/size_config.dart';
 
 class UpdateProfileForm extends StatefulWidget {
   final User? user;

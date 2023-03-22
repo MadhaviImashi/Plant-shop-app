@@ -7,7 +7,7 @@ import 'package:plant_shop_app/helper/keyboard.dart';
 import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 
 import '../../../components/default_button.dart';
-import '../../../size_config.dart';
+import '../../../helper/size_config.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 

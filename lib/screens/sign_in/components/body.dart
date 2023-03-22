@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/no_account_text.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
-import 'package:plant_shop_app/constants.dart';
-import '../../../size_config.dart';
+import 'package:plant_shop_app/helper/constants.dart';
+import '../../../helper/size_config.dart';
 import 'sign_in_form.dart';
 
 class Body extends StatelessWidget {

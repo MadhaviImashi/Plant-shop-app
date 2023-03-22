@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/default_button.dart';
 import 'package:plant_shop_app/screens/home/user_home_screen.dart';
-import 'package:plant_shop_app/size_config.dart';
+import 'package:plant_shop_app/helper/size_config.dart';
 
 class LoginSuccessScreen extends StatefulWidget {
   final User? user;

@@ -4,9 +4,9 @@ import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/default_button.dart';
 import 'package:plant_shop_app/components/form_error.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
-import 'package:plant_shop_app/constants.dart';
+import 'package:plant_shop_app/helper/constants.dart';
 
-import '../../../size_config.dart';
+import '../../../helper/size_config.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 

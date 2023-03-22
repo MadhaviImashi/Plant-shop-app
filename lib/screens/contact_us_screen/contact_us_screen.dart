@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plant_shop_app/constants.dart';
+import 'package:plant_shop_app/helper/constants.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
-import 'package:plant_shop_app/size_config.dart';
+import 'package:plant_shop_app/helper/size_config.dart';
 
 class HelpCentrePage extends StatefulWidget {
   final User? user;
