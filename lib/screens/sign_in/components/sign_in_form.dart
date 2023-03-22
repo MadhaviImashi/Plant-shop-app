@@ -22,7 +22,7 @@ class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final List<String?> errors = [];
+  List<String?> errors = [];
   bool circular = false;
 
   void addError({String? error}) {
@@ -60,6 +60,7 @@ class _SignInFormState extends State<SignInForm> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 KeyboardUtil.hideKeyboard(context);
+                errors = [];
                 setState(() {
                   circular = true;
                 });
@@ -75,8 +76,9 @@ class _SignInFormState extends State<SignInForm> {
                     circular = false;
                   });
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) =>
-                          LoginSuccessScreen() // this should be replaced with Home(user: value))
+                      builder: (context) => LoginSuccessScreen(
+                          user:
+                              user) // this should be replaced with Home(user: value))
                       ));
                 } on FirebaseAuthException catch (e) {
                   setState(() {
