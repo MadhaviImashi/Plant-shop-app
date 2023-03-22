@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:plant_shop_app/screens/home/user_home_screen.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
 import 'package:plant_shop_app/screens/update_profile/update_profile_screen.dart';
+import 'package:plant_shop_app/screens/wishlist/wishlist_screen.dart';
 import 'package:plant_shop_app/theme.dart';
 import 'firebase_options.dart';
 
@@ -35,12 +37,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (BuildContext context) => SignInScreen(),
         '/register': (BuildContext context) => SignUpScreen(),
-        '/home': (BuildContext context) => SignInScreen(),
-        '/favorites': (BuildContext context) => SignInScreen(),
+        // '/home': (BuildContext context) => const UserHome(user: null),
+        // '/favorites': (BuildContext context) =>
+        //     const WishlistScreen(user: null),
         '/cart': (BuildContext context) => SignInScreen(),
         '/tips': (BuildContext context) => SignInScreen(),
-        '/profile': (BuildContext context) => const ProfileScreen(),
-        '/profile-update': (BuildContext context) => UpdateProfileScreen(),
+        // '/profile': (BuildContext context) => const ProfileScreen(user: null),
+        // '/profile-update': (BuildContext context) => UpdateProfileScreen(),
       },
     );
   }
