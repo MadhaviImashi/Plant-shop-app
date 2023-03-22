@@ -7,6 +7,7 @@ import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
 import 'package:plant_shop_app/theme.dart';
 import 'firebase_options.dart';
+import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -38,12 +39,12 @@ class MyApp extends StatelessWidget {
         // '/home': (BuildContext context) => const UserHome(user: null),
         // '/favorites': (BuildContext context) =>
         //     const WishlistScreen(user: null),
-        '/cart': (BuildContext context) => SignInScreen(),
+        '/cart': (BuildContext context) => CartPage(),
         '/tips': (BuildContext context) => SignInScreen(),
         // '/profile': (BuildContext context) => const ProfileScreen(user: null),
         // '/profile-update': (BuildContext context) => UpdateProfileScreen(),
-        '/admin_home' : (BuildContext context) => const AdminHome(),
-        '/add_plant' : (BuildContext context) => const AddImage(),
+        '/admin_home': (BuildContext context) => const AdminHome(),
+        '/add_plant': (BuildContext context) => const AddImage(),
       },
     );
   }
