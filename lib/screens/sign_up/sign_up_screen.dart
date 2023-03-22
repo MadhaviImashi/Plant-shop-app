@@ -138,15 +138,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SocalCard(
+                      SocialLoginCard(
                         icon: "assets/icons/google-icon.svg",
                         press: () {},
                       ),
-                      SocalCard(
+                      SocialLoginCard(
                         icon: "assets/icons/facebook-2.svg",
                         press: () {},
                       ),
-                      SocalCard(
+                      SocialLoginCard(
                         icon: "assets/icons/twitter.svg",
                         press: () {},
                       ),
