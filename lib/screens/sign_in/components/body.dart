@@ -15,8 +15,7 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(horizontal: getRelativeScreenWidth(20)),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -25,7 +24,7 @@ class Body extends StatelessWidget {
                   "Welcome! ☘️",
                   style: TextStyle(
                     color: kSecondaryColor,
-                    fontSize: getProportionateScreenWidth(28),
+                    fontSize: getRelativeScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -49,7 +48,7 @@ class Body extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: getRelativeScreenHeight(20)),
                 NoAccountText(),
               ],
             ),

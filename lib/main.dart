@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:plant_shop_app/screens/home/user_home_screen.dart';
-import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
-import 'package:plant_shop_app/screens/update_profile/update_profile_screen.dart';
-import 'package:plant_shop_app/screens/wishlist/wishlist_screen.dart';
 import 'package:plant_shop_app/theme.dart';
 import 'firebase_options.dart';
 

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/default_button.dart';
 import 'package:plant_shop_app/screens/home/user_home_screen.dart';
-import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 import 'package:plant_shop_app/size_config.dart';
 
 class LoginSuccessScreen extends StatefulWidget {
@@ -39,7 +38,7 @@ class _LoginSuccessScreenState extends State<LoginSuccessScreen> {
           Text(
             "Login Successfull !",
             style: TextStyle(
-              fontSize: getProportionateScreenWidth(30),
+              fontSize: getRelativeScreenWidth(30),
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 108, 107, 107),
             ),

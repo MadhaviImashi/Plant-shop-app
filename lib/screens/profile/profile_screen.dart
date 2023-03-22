@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
+import 'package:plant_shop_app/contact_us_screen/contact_us_screen.dart';
 import 'package:plant_shop_app/enums.dart';
 import 'package:plant_shop_app/screens/profile/components/profile_menu.dart';
 import 'package:plant_shop_app/screens/profile/components/profile_pic.dart';
@@ -47,7 +48,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfileMenu(
               text: "Help Center",
               icon: "assets/icons/Question mark.svg",
-              press: () => {},
+              press: () {
+                // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => HelpCentrePage(user: _currentUser)));
+              },
             ),
             ProfileMenu(
               text: "Log Out",

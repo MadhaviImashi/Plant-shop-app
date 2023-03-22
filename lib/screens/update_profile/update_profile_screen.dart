@@ -6,7 +6,6 @@ import 'package:plant_shop_app/components/default_button.dart';
 import 'package:plant_shop_app/components/form_error.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 
-import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class UpdateProfileForm extends StatefulWidget {
@@ -56,61 +55,29 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
     // Call the init method of the SizeConfig class
     SizeConfig().init(context);
 
-    TextFormField buildAddressFormField() {
+    TextFormField fullNameFormField() {
       return TextFormField(
-        onSaved: (newValue) => addressController.text = newValue!,
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            removeError(error: kAddressNullError);
-          }
-          return null;
-        },
-        controller: addressController,
-        // focusNode: addressFocusNode,
+        controller: fullNameController,
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kAddressNullError);
+            addError(error: 'Please Enter your name');
             return "";
           }
           return null;
         },
         decoration: const InputDecoration(
-          labelText: "Address",
-          hintText: "Enter your home address",
+          labelText: "Full Name",
+          hintText: "Enter your full name",
           hintStyle: TextStyle(
             color: Colors.grey, // Set the color of the placeholder text
           ),
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon:
-              CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+          suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
         ),
       );
     }
 
-    TextFormField buildPhoneNumberFormField() {
-      return TextFormField(
-        keyboardType: TextInputType.phone,
-        controller: phoneNumberController,
-        validator: (value) {
-          if (value!.isEmpty) {
-            addError(error: kPhoneNumberNullError);
-            return "";
-          }
-          return null;
-        },
-        decoration: const InputDecoration(
-          labelText: "Phone Number",
-          hintText: "Enter your phone number",
-          hintStyle: TextStyle(
-            color: Colors.grey, // Set the color of the placeholder text
-          ),
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
-        ),
-      );
-    }
-
-    TextFormField buildEmailFormField() {
+    TextFormField emailFormField() {
       return TextFormField(
         initialValue: email,
         enabled: false,
@@ -129,24 +96,56 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
       );
     }
 
-    TextFormField buildFullNameFormField() {
+    TextFormField phoneNumberFormField() {
       return TextFormField(
-        controller: fullNameController,
+        keyboardType: TextInputType.phone,
+        controller: phoneNumberController,
         validator: (value) {
           if (value!.isEmpty) {
-            addError(error: kNamelNullError);
+            addError(error: 'Please Enter your phone number');
             return "";
           }
           return null;
         },
         decoration: const InputDecoration(
-          labelText: "Full Name",
-          hintText: "Enter your full name",
+          labelText: "Phone Number",
+          hintText: "Enter your phone number",
           hintStyle: TextStyle(
             color: Colors.grey, // Set the color of the placeholder text
           ),
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+          suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+        ),
+      );
+    }
+
+    TextFormField addressFormField() {
+      return TextFormField(
+        onSaved: (newValue) => addressController.text = newValue!,
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            removeError(error: 'Please Enter your address');
+          }
+          return null;
+        },
+        controller: addressController,
+        // focusNode: addressFocusNode,
+        validator: (value) {
+          if (value!.isEmpty) {
+            addError(error: 'Please Enter your address');
+            return "";
+          }
+          return null;
+        },
+        decoration: const InputDecoration(
+          labelText: "Address",
+          hintText: "Enter your home address",
+          hintStyle: TextStyle(
+            color: Colors.grey, // Set the color of the placeholder text
+          ),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon:
+              CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
         ),
       );
     }
@@ -167,8 +166,8 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
         child: SizedBox(
           width: double.infinity,
           child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(20)),
+            padding:
+                EdgeInsets.symmetric(horizontal: getRelativeScreenWidth(20)),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -177,7 +176,7 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                     "My Account",
                     style: TextStyle(
                       color: Color(0xFF58AF8B),
-                      fontSize: getProportionateScreenWidth(28),
+                      fontSize: getRelativeScreenWidth(28),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -223,19 +222,15 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                           key: _formKey,
                           child: Column(
                             children: [
-                              buildFullNameFormField(),
-                              SizedBox(
-                                  height: getProportionateScreenHeight(30)),
-                              buildEmailFormField(),
-                              SizedBox(
-                                  height: getProportionateScreenHeight(30)),
-                              buildPhoneNumberFormField(),
-                              SizedBox(
-                                  height: getProportionateScreenHeight(30)),
-                              buildAddressFormField(),
+                              fullNameFormField(),
+                              SizedBox(height: getRelativeScreenHeight(30)),
+                              emailFormField(),
+                              SizedBox(height: getRelativeScreenHeight(30)),
+                              phoneNumberFormField(),
+                              SizedBox(height: getRelativeScreenHeight(30)),
+                              addressFormField(),
                               FormError(errors: errors),
-                              SizedBox(
-                                  height: getProportionateScreenHeight(40)),
+                              SizedBox(height: getRelativeScreenHeight(40)),
                               DefaultButton(
                                 text: "Update Profile",
                                 press: () async {
@@ -296,7 +291,7 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                       }),
                   SizedBox(height: 15),
                   circular ? const CircularProgressIndicator() : const Text(''),
-                  SizedBox(height: getProportionateScreenHeight(30)),
+                  SizedBox(height: getRelativeScreenHeight(30)),
                   Text(
                     "CTSE-Assignment by team @Falcon",
                     textAlign: TextAlign.center,

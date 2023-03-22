@@ -35,8 +35,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+        padding: EdgeInsets.symmetric(horizontal: getRelativeScreenWidth(20)),
         child: StreamBuilder<List<Map<String, dynamic>>>(
             stream: FirebaseFirestore.instance
                 .collection('wishlist')
@@ -130,7 +129,7 @@ class FavoriteCard extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 0.88,
               child: Container(
-                padding: EdgeInsets.all(getProportionateScreenWidth(10)),
+                padding: EdgeInsets.all(getRelativeScreenWidth(10)),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 238, 250, 246),
                   borderRadius: BorderRadius.circular(15),
