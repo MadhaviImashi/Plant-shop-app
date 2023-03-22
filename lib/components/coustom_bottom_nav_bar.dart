@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
-
+import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
 import '../constants.dart';
 import '../enums.dart';
 
@@ -76,7 +76,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
+                onPressed: () => Navigator.pushNamed(context, '/cart'),
               ),
               IconButton(
                 icon: SvgPicture.asset(
