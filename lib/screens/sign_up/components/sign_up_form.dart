@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/default_button.dart';
@@ -18,7 +19,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final checkController = TextEditingController();
-  final List<String?> errors = [];
+  List<String?> errors = [];
   bool circular = false;
 
   void addError({String? error}) {
@@ -53,8 +54,10 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(
             text: "Sign Up",
             press: () async {
+              User? user;
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
+                errors = [];
                 setState(() {
                   circular = true;
                 });
@@ -63,7 +66,17 @@ class _SignUpFormState extends State<SignUpForm> {
                       .createUserWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text);
-                  print('user created');
+                  user = userCredential.user;
+                  print('user created ${user}');
+                  // save the email of the user in user_data collection
+                  DocumentReference<Map<String, dynamic>> docRef =
+                      await FirebaseFirestore.instance
+                          .collection('user_data')
+                          .doc(user?.uid);
+
+                  await docRef.set({
+                    'email': user?.email,
+                  });
                   // ignore: use_build_context_synchronously
                   Navigator.pushNamed(context, '/login');
                 } on FirebaseAuthException catch (e) {
