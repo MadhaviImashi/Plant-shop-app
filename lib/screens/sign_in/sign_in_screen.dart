@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/form_error.dart';
-import 'package:plant_shop_app/components/no_account_text.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
-import 'package:plant_shop_app/helper/keyboard.dart';
+import 'package:plant_shop_app/helper/constants.dart';
 import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 
 import '../../../components/default_button.dart';
 import '../../helper/size_config.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+
+class KeyboardUtil {
+  static void hideKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+}
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -142,22 +150,39 @@ class _SignInScreenState extends State<SignInScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SocalCard(
+                      SocialLoginCard(
                         icon: "assets/icons/google-icon.svg",
                         press: () {},
                       ),
-                      SocalCard(
+                      SocialLoginCard(
                         icon: "assets/icons/facebook-2.svg",
                         press: () {},
                       ),
-                      SocalCard(
+                      SocialLoginCard(
                         icon: "assets/icons/twitter.svg",
                         press: () {},
                       ),
                     ],
                   ),
                   SizedBox(height: getRelativeScreenHeight(20)),
-                  NoAccountText(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don’t have an account? ",
+                        style: TextStyle(fontSize: getRelativeScreenWidth(16)),
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(context, '/register'),
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(
+                              fontSize: getRelativeScreenWidth(16),
+                              color: kPrimaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
