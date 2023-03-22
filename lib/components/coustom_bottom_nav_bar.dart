@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plant_shop_app/screens/home/user_home_screen.dart';
 import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
+import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
+import '../constants.dart';
+import '../enums.dart';
 import 'package:plant_shop_app/screens/wishlist/wishlist_screen.dart';
 
 import '../helper/constants.dart';
@@ -106,7 +109,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
+                onPressed: () => Navigator.pushNamed(context, '/cart'),
               ),
               IconButton(
                 icon: SvgPicture.asset(
