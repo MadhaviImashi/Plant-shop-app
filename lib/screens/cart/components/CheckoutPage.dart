@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:plant_shop_app/helper/constants.dart';
+import 'package:plant_shop_app/helper/enums.dart';
+import 'package:plant_shop_app/helper/size_config.dart';
 import 'OrdersPage.dart';
-import 'package:plant_shop_app/enums.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
 import '../../../components/default_button.dart';
-import '../../../size_config.dart';
-import '../../../constants.dart';
 
 class CheckoutPage extends StatefulWidget {
   @override
@@ -88,7 +88,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: getProportionateScreenHeight(30)),
+                SizedBox(height: getRelativeScreenHeight(30)),
                 TextFormField(
                   decoration: InputDecoration(
                     hintText: "Enter delivery name",
@@ -104,7 +104,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     _name = value!;
                   },
                 ),
-                SizedBox(height: getProportionateScreenHeight(8)),
+                SizedBox(height: getRelativeScreenHeight(8)),
                 TextFormField(
                   decoration: InputDecoration(
                     hintText: "Enter delivery address",
@@ -120,7 +120,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     _address = value!;
                   },
                 ),
-                SizedBox(height: getProportionateScreenHeight(8)),
+                SizedBox(height: getRelativeScreenHeight(8)),
                 TextFormField(
                   decoration: InputDecoration(
                     hintText: "Enter delivery phone number",
@@ -136,7 +136,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     _phoneNumber = value!;
                   },
                 ),
-                SizedBox(height: getProportionateScreenHeight(8)),
+                SizedBox(height: getRelativeScreenHeight(8)),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -153,7 +153,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   },
                 ),
                 SizedBox(height: 16.0),
-                SizedBox(height: getProportionateScreenHeight(5)),
+                SizedBox(height: getRelativeScreenHeight(5)),
                 DefaultButton(
                   text: "Submit Order",
                   press: () {
@@ -181,7 +181,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     }
                   },
                 ),
-                SizedBox(height: getProportionateScreenHeight(10)),
+                SizedBox(height: getRelativeScreenHeight(10)),
                 DefaultButton(
                   text: "View Orders",
                   press: () {

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:intl/intl.dart';
-import 'package:plant_shop_app/enums.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
-import 'package:plant_shop_app/enums.dart';
-import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
+import 'package:plant_shop_app/helper/constants.dart';
+import 'package:plant_shop_app/helper/enums.dart';
+import 'package:plant_shop_app/helper/size_config.dart';
 import '../../../components/default_button.dart';
-import '../../../size_config.dart';
-import '../../../constants.dart';
 
 class OrdersPage extends StatefulWidget {
   @override
@@ -191,102 +189,96 @@ class _OrdersPageState extends State<OrdersPage> {
                           )
                         ],
                       ),
-                      trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.delete),
-                              onPressed: () {
-                                _showDeleteDialog(context, document);
-                              },
+                      trailing: Row(mainAxisSize: MainAxisSize.min, children: <
+                          Widget>[
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            _showDeleteDialog(context, document);
+                          },
+                        ),
+                        Container(
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 238, 250, 246),
+                              borderRadius: BorderRadius.circular(30.0),
                             ),
-                            Container(
-                                decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 238, 250, 246),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                child: IconButton(
-                                  icon: Icon(Icons.edit),
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('Update Order'),
-                                          content: SingleChildScrollView(
-                                              // Wrap content with SingleChildScrollView
-                                              child: Form(
-                                            key: _formKey,
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                TextFormField(
-                                                  initialValue: data['email'],
-                                                  decoration: InputDecoration(
-                                                      labelText: 'Email'),
-                                                  onChanged: (value) =>
-                                                      data['email'] = value,
-                                                ),
-                                                SizedBox(
-                                                    height:
-                                                        getProportionateScreenHeight(
-                                                            10)),
-                                                TextFormField(
-                                                  initialValue:
-                                                      data['phone_number'],
-                                                  decoration: InputDecoration(
-                                                      labelText: 'Telephone'),
-                                                  onChanged: (value) =>
-                                                      data['phone_number'] =
-                                                          value,
-                                                ),
-                                                SizedBox(
-                                                    height:
-                                                        getProportionateScreenHeight(
-                                                            10)),
-                                                TextFormField(
-                                                  initialValue: data['address'],
-                                                  decoration: InputDecoration(
-                                                      labelText: 'Address'),
-                                                  onChanged: (value) =>
-                                                      data['address'] = value,
-                                                ),
-                                              ],
-                                            ),
-                                          )),
-                                          actions: [
-                                            SizedBox(
-                                                height:
-                                                    getProportionateScreenHeight(
-                                                        10)),
-                                            DefaultButton(
-                                              text: "Cancel",
-                                              press: () =>
-                                                  Navigator.of(context).pop(),
+                            child: IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Update Order'),
+                                      content: SingleChildScrollView(
+                                          // Wrap content with SingleChildScrollView
+                                          child: Form(
+                                        key: _formKey,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            TextFormField(
+                                              initialValue: data['email'],
+                                              decoration: InputDecoration(
+                                                  labelText: 'Email'),
+                                              onChanged: (value) =>
+                                                  data['email'] = value,
                                             ),
                                             SizedBox(
-                                                height:
-                                                    getProportionateScreenHeight(
-                                                        10)),
-                                            DefaultButton(
-                                              text: "Update",
-                                              press: () {
-                                                // Perform update operation on data map
-                                                FirebaseFirestore.instance
-                                                    .collection('orders')
-                                                    .doc(snapshot
-                                                        .data!.docs[index].id)
-                                                    .update(data);
-                                                Navigator.of(context).pop();
-                                              },
+                                                height: getRelativeScreenHeight(
+                                                    10)),
+                                            TextFormField(
+                                              initialValue:
+                                                  data['phone_number'],
+                                              decoration: InputDecoration(
+                                                  labelText: 'Telephone'),
+                                              onChanged: (value) =>
+                                                  data['phone_number'] = value,
+                                            ),
+                                            SizedBox(
+                                                height: getRelativeScreenHeight(
+                                                    10)),
+                                            TextFormField(
+                                              initialValue: data['address'],
+                                              decoration: InputDecoration(
+                                                  labelText: 'Address'),
+                                              onChanged: (value) =>
+                                                  data['address'] = value,
                                             ),
                                           ],
-                                        );
-                                      },
+                                        ),
+                                      )),
+                                      actions: [
+                                        SizedBox(
+                                            height:
+                                                getRelativeScreenHeight(10)),
+                                        DefaultButton(
+                                          text: "Cancel",
+                                          press: () =>
+                                              Navigator.of(context).pop(),
+                                        ),
+                                        SizedBox(
+                                            height:
+                                                getRelativeScreenHeight(10)),
+                                        DefaultButton(
+                                          text: "Update",
+                                          press: () {
+                                            // Perform update operation on data map
+                                            FirebaseFirestore.instance
+                                                .collection('orders')
+                                                .doc(snapshot
+                                                    .data!.docs[index].id)
+                                                .update(data);
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
                                     );
                                   },
-                                ))
-                          ]));
+                                );
+                              },
+                            ))
+                      ]));
                 },
               );
           }

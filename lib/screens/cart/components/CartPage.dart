@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
-import '../../../constants.dart';
+import 'package:plant_shop_app/helper/enums.dart';
 import '../models/PlantModel.dart';
 import 'CheckoutPage.dart';
-import '../../../size_config.dart';
-import 'package:plant_shop_app/enums.dart';
 import '../../../components/default_button.dart';
 
 class CartPage extends StatefulWidget {

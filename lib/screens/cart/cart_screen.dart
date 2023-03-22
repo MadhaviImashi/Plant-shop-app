@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
-import 'package:plant_shop_app/enums.dart';
+import 'package:plant_shop_app/helper/enums.dart';
 import 'components/CartPage.dart';
 import 'components/CheckoutPage.dart';
 
@@ -15,7 +15,6 @@ class CartScreen extends StatelessWidget {
         title: const Text("My Cart"),
       ),
       body: CartPage(),
-      
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
     );
   }
