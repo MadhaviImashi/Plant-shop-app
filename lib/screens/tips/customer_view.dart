@@ -42,7 +42,7 @@ class _CustomerTipHomeState extends State<CustomerTipHome> {
                     Color tipColor = const Color.fromARGB(255, 82, 243, 33);
 
                     return Container(
-                      height: 80,
+                      height: 100,
                       margin: const EdgeInsets.only(bottom: 15.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
@@ -60,7 +60,7 @@ class _CustomerTipHomeState extends State<CustomerTipHome> {
                         leading: Container(
                           width: 100,
                           height: 100,
-                          padding: const EdgeInsets.symmetric(vertical: 1.0),
+                          padding: const EdgeInsets.symmetric(vertical: 2.0),
                           alignment: Alignment.center,
                           child: Image.network(data['img'], fit: BoxFit.fill),
                         ),
