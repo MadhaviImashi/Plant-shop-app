@@ -5,6 +5,7 @@ import 'package:plant_shop_app/screens/plants/admin_view.dart';
 import 'package:plant_shop_app/screens/plants/camera_image.dart';
 import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
+import 'package:plant_shop_app/screens/tips/components/add_form.dart';
 import 'package:plant_shop_app/theme.dart';
 import 'firebase_options.dart';
 import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         // '/favorites': (BuildContext context) =>
         //     const WishlistScreen(user: null),
         '/cart': (BuildContext context) => CartPage(),
-        '/tips': (BuildContext context) => SignInScreen(),
+        '/tips': (BuildContext context) => AddForm(),
         // '/profile': (BuildContext context) => const ProfileScreen(user: null),
         // '/profile-update': (BuildContext context) => UpdateProfileScreen(),
         '/admin_home': (BuildContext context) => const AdminHome(),
