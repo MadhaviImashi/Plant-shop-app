@@ -54,13 +54,15 @@ class TipListState extends State<TipList> {
                       alignment: Alignment.center,
                       child: Image.network(data['img'], fit: BoxFit.fill),
                     ),
-                    title: Text(data['name']),
+                    title: Text(data['name'],
+                                style: const TextStyle(fontSize: 16)),
                     // subtitle: Text(data['description']),
                     subtitle: Container(
                         child: (Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(data['description']),
+                            Text(data['description'],
+                                style: const TextStyle(fontSize: 14)),
                             Text(data['type']),
                           ],
                         )),
