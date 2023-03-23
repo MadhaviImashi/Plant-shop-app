@@ -108,6 +108,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 ),
                 onPressed: () => Navigator.pushNamed(context, '/cart'),
               ),
+              // IconButton(
+              //   icon: SvgPicture.asset(
+              //     "assets/icons/Question mark.svg",
+              //     // ignore: deprecated_member_use
+              //     color: MenuState.tips == _selectedMenuState
+              //         ? kPrimaryColor
+              //         : inActiveIconColor,
+              //   ),
+              //   onPressed: () => Navigator.pushNamed(context, '/tips'),
+              // ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/Question mark.svg",
@@ -116,7 +126,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/tips'),
+                onPressed: () => Navigator.pushNamed(context, '/customer_tips'),
               ),
               IconButton(
                 icon: SvgPicture.asset(
