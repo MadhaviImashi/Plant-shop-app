@@ -8,13 +8,13 @@ import 'package:plant_shop_app/screens/wishlist/wishlist_screen.dart';
 
 import '../helper/constants.dart';
 import '../helper/enums.dart';
+import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final User? user;
   final MenuState? selectedMenu;
 
-  const CustomBottomNavBar(
-      {super.key, required this.selectedMenu, required this.user});
+  const CustomBottomNavBar({super.key, required this.selectedMenu, this.user});
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
@@ -106,7 +106,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
+                onPressed: () => Navigator.pushNamed(context, '/cart'),
               ),
               IconButton(
                 icon: SvgPicture.asset(
