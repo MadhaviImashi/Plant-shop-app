@@ -11,15 +11,15 @@ import '../../helper/admin_enum.dart';
 import 'add_tips.dart';
 
 /// Add tip image from gallery or camera
-class AddImage extends StatefulWidget {
-  const AddImage({super.key});
+class AddTipImage extends StatefulWidget {
+  const AddTipImage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _AddImageState createState() => _AddImageState();
+  _AddTipImageState createState() => _AddTipImageState();
 }
 
-class _AddImageState extends State<AddImage> {
+class _AddTipImageState extends State<AddTipImage> {
   /// Variables
   final fs = FirebaseStorage.instance;
   final imagePicker = ImagePicker();

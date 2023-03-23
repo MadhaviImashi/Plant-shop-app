@@ -7,18 +7,18 @@ import './components/view_card.dart';
 
 
 //Admin home view
-class AdminHome extends StatefulWidget {
-  const AdminHome({super.key});
+class AdminTipHome extends StatefulWidget {
+  const AdminTipHome({super.key});
   @override
-  State<AdminHome> createState() => _AdminHomeState();
+  State<AdminTipHome> createState() => _AdminTipHomeState();
 }
 
-class _AdminHomeState extends State<AdminHome> {
+class _AdminTipHomeState extends State<AdminTipHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("Tips"),
       ),
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Stack(

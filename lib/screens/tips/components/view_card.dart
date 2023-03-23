@@ -30,7 +30,7 @@ class TipListState extends State<TipList> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
 
-                Color plantColor = const Color.fromARGB(255, 82, 243, 33);
+                Color tipColor = const Color.fromARGB(255, 82, 243, 33);
 
                 return Container(
                   height: 80,
@@ -48,16 +48,15 @@ class TipListState extends State<TipList> {
                   ),
                   child: ListTile(
                     leading: Container(
-                      width: 20,
-                      height: 20,
+                      width: 60,
+                      height: 90,
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       alignment: Alignment.center,
-                      child: CircleAvatar(
-                        backgroundColor: plantColor,
-                      ),
+                      child: Image.network(data['img'], fit: BoxFit.fill),
                     ),
                     title: Text(data['name']),
-                    subtitle: Text(data['type']),
+                    subtitle: Text(data['description']),
+                  
                     isThreeLine: true,
                     trailing: PopupMenuButton(
                       itemBuilder: (context) {
