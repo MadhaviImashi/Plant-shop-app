@@ -48,14 +48,23 @@ class TipListState extends State<TipList> {
                   ),
                   child: ListTile(
                     leading: Container(
-                      width: 60,
-                      height: 90,
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      width: 100,
+                      height: 100,
+                      padding: const EdgeInsets.symmetric(vertical: 1.0),
                       alignment: Alignment.center,
                       child: Image.network(data['img'], fit: BoxFit.fill),
                     ),
                     title: Text(data['name']),
-                    subtitle: Text(data['description']),
+                    // subtitle: Text(data['description']),
+                    subtitle: Container(
+                        child: (Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(data['description']),
+                            Text(data['type']),
+                          ],
+                        )),
+                      ),
                   
                     isThreeLine: true,
                     trailing: PopupMenuButton(
