@@ -42,8 +42,8 @@ class _UpdateTipsState extends State<UpdateTips> {
             child: UpdateForm(
                 id: widget.id,
                 name: widget.name,
-                type: widget.type,
-                description: widget.description))
+                description: widget.description,
+                type: widget.type))
       ])),
         bottomNavigationBar:  const AdminNavBar(selectedMenu: AdminState.tips)
     );

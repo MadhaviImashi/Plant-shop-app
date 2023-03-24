@@ -62,7 +62,7 @@ class _UpdateFormState extends State<UpdateForm> {
             items: <String>[
               'Indoor',
               'Outdoor',
-              'Fertilizer'
+              'Fern'
             ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,

@@ -44,7 +44,7 @@ class _AddFormState extends State<AddForm> {
             items: <String>[
               'Indoor',
               'Outdoor',
-              'Fertilizer'
+              'Fern'
             ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
