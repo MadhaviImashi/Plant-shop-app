@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/form_error.dart';
+import 'package:plant_shop_app/components/snackbar.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
 import 'package:plant_shop_app/helper/constants.dart';
 import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
+import 'package:plant_shop_app/screens/plants/admin_view.dart';
 
 import '../../../components/default_button.dart';
 import '../../helper/size_config.dart';
@@ -107,12 +109,23 @@ class _SignInScreenState extends State<SignInScreen> {
                                 setState(() {
                                   circular = false;
                                 });
-                                Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginSuccessScreen(
-                                            user:
-                                                user) // this should be replaced with Home(user: value))
-                                        ));
+                                if (user!.email == 'abcd@gmail.com') {
+                                  //navigate to admin home
+                                  snackBar(context, 'Admin Login Successful');
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AdminHome() // this should be replaced with Home(user: value))
+                                          ));
+                                } else {
+                                  //navigate to user home
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginSuccessScreen(
+                                              user:
+                                                  user) // this should be replaced with Home(user: value))
+                                          ));
+                                }
                               } on FirebaseAuthException catch (e) {
                                 setState(() {
                                   circular = false;

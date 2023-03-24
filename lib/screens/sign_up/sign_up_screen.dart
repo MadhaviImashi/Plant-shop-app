@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/default_button.dart';
 import 'package:plant_shop_app/components/form_error.dart';
+import 'package:plant_shop_app/components/snackbar.dart';
 import 'package:plant_shop_app/components/socal_card.dart';
 import 'package:plant_shop_app/helper/size_config.dart';
 
@@ -99,6 +100,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 await docRef.set({
                                   'email': user?.email,
                                 });
+                                // ignore: use_build_context_synchronously
+                                snackBar(
+                                    context, 'User registered successfully');
                                 // ignore: use_build_context_synchronously
                                 Navigator.pushNamed(context, '/login');
                               } on FirebaseAuthException catch (e) {
