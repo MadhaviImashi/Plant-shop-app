@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:plant_shop_app/screens/cart/cart_screen.dart';
 import 'package:plant_shop_app/screens/home/user_home_screen.dart';
-import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 import 'package:plant_shop_app/screens/wishlist/wishlist_screen.dart';
 
 import '../helper/constants.dart';
 import '../helper/enums.dart';
-import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
+
 
 class CustomBottomNavBar extends StatefulWidget {
   final User? user;
@@ -30,14 +30,6 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     _selectedMenuState = widget.selectedMenu!;
     super.initState();
   }
-
-// class CustomBottomNavBar extends StatelessWidget {
-//   const CustomBottomNavBar({
-//     Key? key,
-//     required this.selectedMenu,
-//   }) : super(key: key);
-
-//   final MenuState selectedMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -91,16 +83,6 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               ),
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/Question mark.svg",
-                  // ignore: deprecated_member_use
-                  color: MenuState.tips == _selectedMenuState
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
-              ),
-              IconButton(
-                icon: SvgPicture.asset(
                   "assets/icons/Cart Icon.svg",
                   // ignore: deprecated_member_use
                   color: MenuState.cart == _selectedMenuState
@@ -111,6 +93,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => CartScreen(user: _currentUser)))
                 },
+              ),
+              IconButton(
+                icon: SvgPicture.asset(
+                  "assets/icons/Question mark.svg",
+                  // ignore: deprecated_member_use
+                  color: MenuState.tips == _selectedMenuState
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.pushNamed(context, '/customer_tips'),
               ),
               IconButton(
                 icon: SvgPicture.asset(

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_launcher_icons/xml_templates.dart';
-import 'package:intl/intl.dart';
-import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
 import 'package:plant_shop_app/helper/constants.dart';
-import 'package:plant_shop_app/helper/enums.dart';
 import 'package:plant_shop_app/helper/size_config.dart';
 import '../../../components/default_button.dart';
 
 class OrdersPage extends StatefulWidget {
+  const OrdersPage({super.key});
+
   @override
   _OrdersPageState createState() => _OrdersPageState();
 }
@@ -29,7 +27,7 @@ class _OrdersPageState extends State<OrdersPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Edit Order"),
+          title: const Text("Edit Order"),
           content: Form(
               key: _formKey,
               child: SingleChildScrollView(
@@ -38,7 +36,7 @@ class _OrdersPageState extends State<OrdersPage> {
                   children: <Widget>[
                     TextFormField(
                       initialValue: _email,
-                      decoration: InputDecoration(labelText: 'Email'),
+                      decoration: const InputDecoration(labelText: 'Email'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter email';
@@ -51,7 +49,7 @@ class _OrdersPageState extends State<OrdersPage> {
                     ),
                     TextFormField(
                       initialValue: _address,
-                      decoration: InputDecoration(labelText: 'Address'),
+                      decoration: const InputDecoration(labelText: 'Address'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter address';
@@ -64,7 +62,7 @@ class _OrdersPageState extends State<OrdersPage> {
                     ),
                     TextFormField(
                       initialValue: _phoneNumber,
-                      decoration: InputDecoration(labelText: 'Telephone'),
+                      decoration: const InputDecoration(labelText: 'Telephone'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter telephone';
@@ -80,13 +78,13 @@ class _OrdersPageState extends State<OrdersPage> {
               )),
           actions: <Widget>[
             TextButton(
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Save"),
+              child: const Text("Save"),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
@@ -115,14 +113,14 @@ class _OrdersPageState extends State<OrdersPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Delete Order'),
-          content: Text('Are you sure you want to delete this order?'),
+          title: const Text('Delete Order'),
+          content: const Text('Are you sure you want to delete this order?'),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(
                 foregroundColor: kPrimaryColor,
               ),
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -131,7 +129,7 @@ class _OrdersPageState extends State<OrdersPage> {
               style: TextButton.styleFrom(
                 foregroundColor: kPrimaryColor,
               ),
-              child: Text('Delete'),
+              child: const Text('Delete'),
               onPressed: () async {
                 await FirebaseFirestore.instance
                     .collection('orders')
@@ -151,7 +149,7 @@ class _OrdersPageState extends State<OrdersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Orders'),
+        title: const Text('Orders'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('orders').snapshots(),
@@ -161,7 +159,7 @@ class _OrdersPageState extends State<OrdersPage> {
           }
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             default:
               return ListView.builder(
                 itemCount: snapshot.data!.docs.length,
@@ -169,7 +167,7 @@ class _OrdersPageState extends State<OrdersPage> {
                   var document = snapshot.data!.docs[index];
                   var data = document.data() as Map<String, dynamic>;
                   return ListTile(
-                      tileColor: Color.fromARGB(255, 182, 235, 212),
+                      tileColor: const Color.fromARGB(255, 182, 235, 212),
                       title: Text(data['name']),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +178,7 @@ class _OrdersPageState extends State<OrdersPage> {
                           Text(
                               'Items: ${data['item_name'] != null ? data['item_name'].join(', ') : ''}'),
                           Text('Total Price: ${data['total_price']}'),
-                          Text(
+                          const Text(
                             '------------------------------------------------',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -192,24 +190,24 @@ class _OrdersPageState extends State<OrdersPage> {
                       trailing: Row(mainAxisSize: MainAxisSize.min, children: <
                           Widget>[
                         IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           onPressed: () {
                             _showDeleteDialog(context, document);
                           },
                         ),
                         Container(
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 238, 250, 246),
+                              color: const Color.fromARGB(255, 238, 250, 246),
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                             child: IconButton(
-                              icon: Icon(Icons.edit),
+                              icon: const Icon(Icons.edit),
                               onPressed: () {
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: Text('Update Order'),
+                                      title: const Text('Update Order'),
                                       content: SingleChildScrollView(
                                           // Wrap content with SingleChildScrollView
                                           child: Form(
@@ -219,7 +217,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                           children: [
                                             TextFormField(
                                               initialValue: data['email'],
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                   labelText: 'Email'),
                                               onChanged: (value) =>
                                                   data['email'] = value,
@@ -230,7 +228,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                             TextFormField(
                                               initialValue:
                                                   data['phone_number'],
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                   labelText: 'Telephone'),
                                               onChanged: (value) =>
                                                   data['phone_number'] = value,
@@ -240,7 +238,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                                     10)),
                                             TextFormField(
                                               initialValue: data['address'],
-                                              decoration: InputDecoration(
+                                              decoration: const InputDecoration(
                                                   labelText: 'Address'),
                                               onChanged: (value) =>
                                                   data['address'] = value,
@@ -284,7 +282,7 @@ class _OrdersPageState extends State<OrdersPage> {
           }
         },
       ),
-      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+
     );
   }
 }

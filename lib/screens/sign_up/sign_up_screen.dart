@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/default_button.dart';
@@ -9,6 +10,8 @@ import 'package:plant_shop_app/components/socal_card.dart';
 import 'package:plant_shop_app/helper/size_config.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -41,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        title: const Text("Sign Up"),
       ),
       body: SafeArea(
         child: SizedBox(
@@ -56,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Text(
                     "Welcome! ☘️",
                     style: TextStyle(
-                      color: Color(0xFF6edbae),
+                      color: const Color(0xFF6edbae),
                       fontSize: getRelativeScreenWidth(28),
                       fontWeight: FontWeight.bold,
                     ),
@@ -90,7 +93,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             email: emailController.text,
                                             password: passwordController.text);
                                 user = userCredential.user;
-                                print('user created ${user}');
+                                if (kDebugMode) {
+                                  print('user created $user');
+                                }
                                 // save the email of the user in user_data collection
                                 DocumentReference<Map<String, dynamic>> docRef =
                                     await FirebaseFirestore.instance
@@ -131,7 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             }
                           },
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         circular
                             ? const CircularProgressIndicator()
                             : const Text(''),

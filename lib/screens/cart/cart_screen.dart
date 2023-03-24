@@ -17,7 +17,7 @@ class CartScreen extends StatelessWidget {
       body: CartPage(
         user: user,
       ),
-      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.cart),
+
     );
   }
 }

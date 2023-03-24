@@ -40,10 +40,10 @@ class _LoginSuccessScreenState extends State<LoginSuccessScreen> {
             style: TextStyle(
               fontSize: getRelativeScreenWidth(30),
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 108, 107, 107),
+              color: const Color.fromARGB(255, 108, 107, 107),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           SizedBox(
             width: SizeConfig.screenWidth * 0.6,
             child: DefaultButton(
@@ -55,7 +55,7 @@ class _LoginSuccessScreenState extends State<LoginSuccessScreen> {
               },
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
