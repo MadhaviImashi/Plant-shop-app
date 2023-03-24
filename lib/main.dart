@@ -6,7 +6,6 @@ import 'package:plant_shop_app/screens/plants/camera_image.dart';
 import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
 import 'package:plant_shop_app/screens/tips/admin_view.dart';
-import 'package:plant_shop_app/screens/tips/camera_image.dart';
 import 'package:plant_shop_app/screens/tips/customer_view.dart';
 import 'package:plant_shop_app/theme.dart';
 import 'firebase_options.dart';

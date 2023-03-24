@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../components/snackbar.dart';
 
-///Form to add tip
+
+///Form to add a new tip
 class AddForm extends StatefulWidget {
-  final String url;
-  const AddForm({super.key, required this.url});
+  const AddForm({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _AddFormState createState() => _AddFormState();
 }
 
@@ -17,7 +16,6 @@ class _AddFormState extends State<AddForm> {
   final nameController = TextEditingController();
   final descriptionController = TextEditingController();
   String type = 'Indoor';
-  late String url = widget.url;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class _AddFormState extends State<AddForm> {
             items: <String>[
               'Indoor',
               'Outdoor',
-              'Fertilizer'
+              'Fern'
             ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -68,10 +66,9 @@ class _AddFormState extends State<AddForm> {
               if (_formKey.currentState!.validate()) {
                 FirebaseFirestore.instance.collection("Tips").add({
                   'name': nameController.text,
-                  'type': type,
                   'description': descriptionController.text,
-                  'img': url,
-                }).whenComplete(() => snackBar(context, "Tip Added"));
+                  'type': type,
+                }).whenComplete(() => snackBar(context, "Tip Successfully Added"));
               } else {
                 snackBar(context, "Error");
               }
@@ -88,13 +85,13 @@ class _AddFormState extends State<AddForm> {
       controller: nameController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Enter Title";
+          return "Tip title is required";
         }
         return null;
       },
       decoration: const InputDecoration(
         labelText: "Tip Title",
-        hintText: "Enter Title",
+        hintText: "Enter tip title here",
       ),
     );
   }
@@ -104,13 +101,13 @@ class _AddFormState extends State<AddForm> {
       controller: descriptionController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Enter Description";
+          return "Description is required";
         }
         return null;
       },
       decoration: const InputDecoration(
         labelText: "Description",
-        hintText: "Enter Description",
+        hintText: "Enter description here",
       ),
     );
   }

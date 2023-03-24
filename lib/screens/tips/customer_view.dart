@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-//Display tips list
-// class TipList extends StatefulWidget {
-//   const TipList({super.key});
-//   @override
-//   State<TipList> createState() => TipListState();
-// }
 
 class CustomerTipHome extends StatefulWidget {
   const CustomerTipHome({super.key});
@@ -35,9 +29,9 @@ class _CustomerTipHomeState extends State<CustomerTipHome> {
                 return ListView(
                   shrinkWrap: true,
                   children:
-                      snapshot.data!.docs.map((DocumentSnapshot document) {
+                  snapshot.data!.docs.map((DocumentSnapshot document) {
                     Map<String, dynamic> data =
-                        document.data()! as Map<String, dynamic>;
+                    document.data()! as Map<String, dynamic>;
 
                     Color tipColor = const Color.fromARGB(255, 82, 243, 33);
 
@@ -52,21 +46,13 @@ class _CustomerTipHomeState extends State<CustomerTipHome> {
                             color: Colors.black,
                             blurRadius: 5.0,
                             offset:
-                                Offset(0, 5), // shadow direction: bottom right
+                            Offset(0, 5),
                           ),
                         ],
                       ),
                       child: ListTile(
-                        leading: Container(
-                          width: 100,
-                          height: 100,
-                          padding: const EdgeInsets.symmetric(vertical: 2.0),
-                          alignment: Alignment.center,
-                          child: Image.network(data['img'], fit: BoxFit.fill),
-                        ),
                         title: Text(data['name'],
                             style: const TextStyle(fontSize: 16)),
-                        // subtitle: Text(data['description']),
                         subtitle: Container(
                           child: (Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

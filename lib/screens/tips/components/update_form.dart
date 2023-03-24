@@ -2,42 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../components/snackbar.dart';
 
-///Form to update tip
+
+///Form to update an existing tip
 class UpdateForm extends StatefulWidget {
   final String id;
-  final String url;
   final String name;
-  final String type;
   final String description;
+  final String type;
 
   const UpdateForm(
       {super.key,
-      required this.url,
-      required this.name,
-      required this.type,
-      required this.description,
-      required this.id});
+        required this.name,
+        required this.description,
+        required this.type,
+        required this.id});
 
   @override
-  // ignore: library_private_types_in_public_api
   _UpdateFormState createState() => _UpdateFormState();
 }
 
 class _UpdateFormState extends State<UpdateForm> {
   final _formKey = GlobalKey<FormState>();
   late String name = widget.name;
-  late String desc = widget.description;
+  late String description = widget.description;
   final nameController = TextEditingController();
   final descriptionController = TextEditingController();
   late String type = widget.type;
-  late String url = widget.url;
   late String id = widget.id;
 
   @override
   Widget build(BuildContext context) {
     setState(() {
       nameController.text = name;
-      descriptionController.text = desc;
+      descriptionController.text = description;
     });
 
     return Form(
@@ -65,7 +62,7 @@ class _UpdateFormState extends State<UpdateForm> {
             items: <String>[
               'Indoor',
               'Outdoor',
-              'Fertilizer'
+              'Fern'
             ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -87,10 +84,9 @@ class _UpdateFormState extends State<UpdateForm> {
               if (_formKey.currentState!.validate()) {
                 FirebaseFirestore.instance.collection("Tips").doc(id).update({
                   'name': nameController.text,
-                  'type': type,
                   'description': descriptionController.text,
-                  'img': url
-                }).whenComplete(() => snackBar(context, "Tip Updated"));
+                  'type': type,
+                }).whenComplete(() => snackBar(context, "Tip Successfully Updated"));
               } else {
                 snackBar(context, "Error");
               }
@@ -107,13 +103,13 @@ class _UpdateFormState extends State<UpdateForm> {
       controller: nameController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Enter Title";
+          return "Tip title is required";
         }
         return null;
       },
       decoration: const InputDecoration(
         labelText: "Tip Title",
-        hintText: "Enter Title",
+        hintText: "Enter tip title here",
       ),
     );
   }
@@ -123,13 +119,13 @@ class _UpdateFormState extends State<UpdateForm> {
       controller: descriptionController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Enter Description";
+          return "Description is required";
         }
         return null;
       },
       decoration: const InputDecoration(
         labelText: "Description",
-        hintText: "Enter Description",
+        hintText: "Enter description here",
       ),
     );
   }
