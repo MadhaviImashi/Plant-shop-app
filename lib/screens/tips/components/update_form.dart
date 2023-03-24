@@ -103,7 +103,7 @@ class _UpdateFormState extends State<UpdateForm> {
       controller: nameController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Enter tip title here";
+          return "Tip title is required";
         }
         return null;
       },
@@ -119,7 +119,7 @@ class _UpdateFormState extends State<UpdateForm> {
       controller: descriptionController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Enter description here";
+          return "Description is required";
         }
         return null;
       },
