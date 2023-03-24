@@ -33,31 +33,31 @@ class _UpdatePlantsState extends State<UpdatePlants> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Update Plant"),
-      ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-            Image.network(widget.url, fit: BoxFit.fill),
-        Card(
-            semanticContainer: true,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            elevation: 5,
-            margin: const EdgeInsets.all(10),
-            child: UpdateForm(
-                id: widget.id,
-                name: widget.name,
-                url: widget.url,
-                type: widget.type,
-                price: widget.price,
-                rate: widget.rate,
-                stock: widget.stock,
-                description: widget.description))
-      ])),
-        bottomNavigationBar:  const AdminNavBar(selectedMenu: AdminState.plants)
-    );
+        appBar: AppBar(
+          title: const Text("Update Plant"),
+        ),
+        body: SingleChildScrollView(
+            child: Column(children: [
+          Image.network(widget.url, fit: BoxFit.fill),
+          Card(
+              semanticContainer: true,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              elevation: 5,
+              margin: const EdgeInsets.all(10),
+              child: UpdateForm(
+                  id: widget.id,
+                  name: widget.name,
+                  url: widget.url,
+                  type: widget.type,
+                  price: widget.price,
+                  rate: widget.rate,
+                  stock: widget.stock,
+                  description: widget.description))
+        ])),
+        bottomNavigationBar:
+            const AdminNavBar(selectedMenu: AdminState.plants));
   }
 }

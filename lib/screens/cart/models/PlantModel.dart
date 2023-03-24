@@ -29,11 +29,11 @@ class Plant {
     return plant;
   }
 
-  static Future<List<Plant>> getPlantsFromFirebase() async {
+  static Future<List<Plant>> getPlantsFromFirebase(String? uid) async {
     List<Plant> plants = [];
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('Carts')
-        .doc('user1')
+        .doc(uid)
         .collection('Plants')
         .get();
     querySnapshot.docs.forEach((doc) {
@@ -43,39 +43,6 @@ class Plant {
     return plants;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 

@@ -29,8 +29,7 @@ class AddPlants extends StatelessWidget {
         ),
         AddForm(url: url)
       ])),
-       bottomNavigationBar:  const AdminNavBar(selectedMenu: AdminState.plants),
+      bottomNavigationBar: const AdminNavBar(selectedMenu: AdminState.plants),
     );
-    
   }
 }

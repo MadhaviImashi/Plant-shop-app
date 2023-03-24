@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:plant_shop_app/screens/cart/cart_screen.dart';
 import 'package:plant_shop_app/screens/home/user_home_screen.dart';
 import 'package:plant_shop_app/screens/login_success/login_success_screen.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
@@ -106,7 +107,10 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/cart'),
+                onPressed: () => {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => CartScreen(user: _currentUser)))
+                },
               ),
               IconButton(
                 icon: SvgPicture.asset(

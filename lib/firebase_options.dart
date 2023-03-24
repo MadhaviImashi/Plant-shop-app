@@ -69,7 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '736273979753',
     projectId: 'ctse-plant',
     storageBucket: 'ctse-plant.appspot.com',
-    iosClientId: '736273979753-u51kagh1ppchf43koto8m354rv1pmhbs.apps.googleusercontent.com',
+    iosClientId:
+        '736273979753-u51kagh1ppchf43koto8m354rv1pmhbs.apps.googleusercontent.com',
     iosBundleId: 'com.example.plantShopApp',
   );
 }

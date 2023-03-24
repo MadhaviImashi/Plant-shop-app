@@ -4,9 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../helper/admin_enum.dart';
 import '../helper/constants.dart';
 
-
-
-
 class AdminNavBar extends StatelessWidget {
   const AdminNavBar({
     Key? key,
