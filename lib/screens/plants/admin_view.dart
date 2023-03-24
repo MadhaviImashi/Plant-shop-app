@@ -1,10 +1,8 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-
 import '../../components/admin_nav.dart';
 import '../../helper/admin_enum.dart';
 import './components/view_card.dart';
-
 
 //Admin home view
 class AdminHome extends StatefulWidget {
@@ -40,7 +38,7 @@ class _AdminHomeState extends State<AdminHome> {
           ),
         ],
       ),
-        bottomNavigationBar:  const AdminNavBar(selectedMenu: AdminState.home),
+      bottomNavigationBar: const AdminNavBar(selectedMenu: AdminState.home),
     );
   }
 }

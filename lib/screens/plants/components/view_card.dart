@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import '../update_plants.dart';
 
 //display plants list
@@ -68,21 +67,18 @@ class PlantListState extends State<PlantList> {
                               'Update',
                               style: TextStyle(fontSize: 13.0),
                             ),
-                            onTap: () => Future(
-                             
-                              ()=>Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UpdatePlants(
-                                          id: document.id,
-                                          name: data['name'],
-                                          url: data['img'],
-                                          type: data['type'],
-                                          price: data['price'],
-                                          rate: data['rating'],
-                                          stock: data['stock'],
-                                          description: data['description'])))
-                            ),
+                            onTap: () => Future(() => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UpdatePlants(
+                                        id: document.id,
+                                        name: data['name'],
+                                        url: data['img'],
+                                        type: data['type'],
+                                        price: data['price'],
+                                        rate: data['rating'],
+                                        stock: data['stock'],
+                                        description: data['description'])))),
                           ),
                           PopupMenuItem(
                             value: 'delete',

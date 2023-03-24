@@ -10,6 +10,7 @@ import 'firebase_options.dart';
 import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
 
 Future<void> main() async {
+  // ignore: unused_local_variable
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -39,7 +40,6 @@ class MyApp extends StatelessWidget {
         // '/home': (BuildContext context) => const UserHome(user: null),
         // '/favorites': (BuildContext context) =>
         //     const WishlistScreen(user: null),
-        '/cart': (BuildContext context) => CartPage(),
         '/tips': (BuildContext context) => SignInScreen(),
         // '/profile': (BuildContext context) => const ProfileScreen(user: null),
         // '/profile-update': (BuildContext context) => UpdateProfileScreen(),

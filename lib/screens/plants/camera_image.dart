@@ -3,8 +3,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
-
-
 import '../../components/admin_nav.dart';
 import '../../components/snackbar.dart';
 import '../../helper/admin_enum.dart';
@@ -67,7 +65,7 @@ class _AddImageState extends State<AddImage> {
                     }
                   } else {
                     // ignore: use_build_context_synchronously
-                    snackBar(context,"Error");
+                    snackBar(context, "Error");
                   }
                 },
                 child: const Text("FROM GALLERY"),
@@ -101,9 +99,8 @@ class _AddImageState extends State<AddImage> {
                                   AddPlants(url: downloadUrl)));
                     }
                   } else {
-
-                        // ignore: use_build_context_synchronously
-                        snackBar(context,"Error");
+                    // ignore: use_build_context_synchronously
+                    snackBar(context, "Error");
                   }
                 },
                 child: const Text("FROM CAMERA"),

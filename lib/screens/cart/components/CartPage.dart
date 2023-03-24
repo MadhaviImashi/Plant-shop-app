@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,11 +9,15 @@ import 'CheckoutPage.dart';
 import '../../../components/default_button.dart';
 
 class CartPage extends StatefulWidget {
+  final User? user;
+  const CartPage({super.key, required this.user});
   @override
   _CartPageState createState() => _CartPageState();
 }
 
 class _CartPageState extends State<CartPage> {
+  late String? user = widget.user?.uid;
+  late User? us = widget.user;
   List<Map<String, dynamic>> _cartItems = [];
   List<Plant> _plants = [];
   double _totalPrice = 0.0;
@@ -20,7 +25,7 @@ class _CartPageState extends State<CartPage> {
   Future<List<Map<String, dynamic>>> _getCartItems() async {
     final snapshot = await FirebaseFirestore.instance
         .collection('Carts')
-        .doc('user1')
+        .doc(user)
         .collection('Plants')
         .get();
 
@@ -28,7 +33,7 @@ class _CartPageState extends State<CartPage> {
   }
 
   Future<List<Plant>> _getPlants() async {
-    return await Plant.getPlantsFromFirebase();
+    return await Plant.getPlantsFromFirebase(user);
   }
 
   @override
@@ -53,7 +58,7 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: const Text('Cart'),
       ),
       body: ListView.builder(
         itemCount: _cartItems.length,
@@ -61,6 +66,7 @@ class _CartPageState extends State<CartPage> {
           var item = _cartItems[index];
           var plant = _plants.firstWhere((p) => p.name == item['name']);
 
+          // ignore: no_leading_underscores_for_local_identifiers
           void _updateCartItems(Plant plant, String itemName, int count) async {
             setState(() {
               var item =
@@ -74,7 +80,7 @@ class _CartPageState extends State<CartPage> {
             // Get the DocumentReference for the corresponding document in Firebase
             var docRef = FirebaseFirestore.instance
                 .collection('Carts')
-                .doc('user1')
+                .doc(user)
                 .collection('Plants')
                 .doc(plant.id);
 
@@ -95,7 +101,7 @@ class _CartPageState extends State<CartPage> {
             // Get the DocumentReference for the corresponding document in Firebase
             var docRef = FirebaseFirestore.instance
                 .collection('Carts')
-                .doc('user1')
+                .doc(user)
                 .collection('Plants')
                 .doc(plantId);
 
@@ -189,8 +195,10 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
       ),
-      // bottomNavigationBar:
-      //     const CustomBottomNavBar(selectedMenu: MenuState.cart),
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedMenu: MenuState.cart,
+        user: us,
+      ),
     );
   }
 }
