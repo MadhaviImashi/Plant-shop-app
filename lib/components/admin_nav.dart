@@ -76,6 +76,16 @@ class AdminNavBar extends StatelessWidget {
                 ),
                 onPressed: () => Navigator.pushNamed(context, '/view_tips'),
               ),
+              IconButton(
+                icon: SvgPicture.asset(
+                  "assets/icons/Log out.svg",
+                  // ignore: deprecated_member_use
+                  color: AdminState.tips == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.pushNamed(context, '/login'),
+              ),
             ],
           )),
     );

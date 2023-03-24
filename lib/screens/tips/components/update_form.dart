@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../components/snackbar.dart';
 
-///Form to updaate tip
+///Form to update tip
 class UpdateForm extends StatefulWidget {
   final String id;
   final String url;

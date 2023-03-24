@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
 import 'package:plant_shop_app/helper/constants.dart';
@@ -7,7 +8,7 @@ import 'package:plant_shop_app/helper/enums.dart';
 
 import 'package:flutter_svg/svg.dart';
 import '../../helper/size_config.dart';
-// import './components/favorite_card.dart';
+
 
 class WishlistScreen extends StatefulWidget {
   final User? user;
@@ -167,7 +168,9 @@ class FavoriteCard extends StatelessWidget {
             onPressed: () async {
               try {
                 String itemName = itemData['name'].toString();
-                print('item name: ${itemName}');
+                if (kDebugMode) {
+                  print('item name: $itemName');
+                }
 
                 QuerySnapshot itemQuerySnapshot = await FirebaseFirestore
                     .instance
@@ -177,7 +180,9 @@ class FavoriteCard extends StatelessWidget {
                     .where('name', isEqualTo: itemName)
                     .get();
                 if (itemQuerySnapshot.size == 0) {
-                  print('Item not found in database!');
+                  if (kDebugMode) {
+                    print('Item not found in database!');
+                  }
                   return;
                 }
                 String itemId = itemQuerySnapshot.docs[0].id;
@@ -187,9 +192,13 @@ class FavoriteCard extends StatelessWidget {
                     .collection('items')
                     .doc(itemId)
                     .delete();
-                print('Deleted item from database!');
+                if (kDebugMode) {
+                  print('Deleted item from database!');
+                }
               } catch (e) {
-                print('Error deleting item: $e');
+                if (kDebugMode) {
+                  print('Error deleting item: $e');
+                }
               }
             },
           ),

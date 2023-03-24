@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/default_button.dart';
@@ -126,7 +127,7 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
           if (value.isNotEmpty) {
             removeError(error: 'Please Enter your address');
           }
-          return null;
+          return;
         },
         controller: addressController,
         // focusNode: addressFocusNode,
@@ -175,7 +176,7 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                   Text(
                     "My Account",
                     style: TextStyle(
-                      color: Color(0xFF58AF8B),
+                      color: const Color(0xFF58AF8B),
                       fontSize: getRelativeScreenWidth(28),
                       fontWeight: FontWeight.bold,
                     ),
@@ -196,7 +197,7 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                           return Text('Error: ${snapshot.error}');
                         }
                         if (!snapshot.hasData) {
-                          return CircularProgressIndicator();
+                          return const CircularProgressIndicator();
                         }
                         Map<String, dynamic>? data =
                             snapshot.data?.data() as Map<String, dynamic>?;
@@ -239,10 +240,12 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                                     setState(() {
                                       circular = true;
                                     });
-                                    print(
+                                    if (kDebugMode) {
+                                      print(
                                         'updated user details: ${fullNameController.text}, ${phoneNumberController.text}, ${addressController.text}');
+                                    }
                                     DocumentReference<Map<String, dynamic>>
-                                        docRef = await FirebaseFirestore
+                                        docRef = FirebaseFirestore
                                             .instance
                                             .collection('user_data')
                                             .doc(_currentUser.uid);
@@ -289,7 +292,7 @@ class _CompleteProfileFormState extends State<UpdateProfileForm> {
                           ),
                         );
                       }),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   circular ? const CircularProgressIndicator() : const Text(''),
                   SizedBox(height: getRelativeScreenHeight(30)),
                   Text(

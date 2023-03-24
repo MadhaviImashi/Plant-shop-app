@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-//display plants list
+///display plants list
 class PlantCard extends StatefulWidget {
   const PlantCard({
     required this.user,

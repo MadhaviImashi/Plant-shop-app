@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../update_tips.dart';
 
-
-import '../update_Tips.dart';
 
 //Display tips list
 class TipList extends StatefulWidget {

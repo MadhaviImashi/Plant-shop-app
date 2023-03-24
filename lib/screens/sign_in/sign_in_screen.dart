@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop_app/components/custom_surfix_icon.dart';
 import 'package:plant_shop_app/components/form_error.dart';
@@ -55,7 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign In"),
+        title: const Text("Sign In"),
       ),
       body: SafeArea(
         child: SizedBox(
@@ -70,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Text(
                     "Welcome! ☘️",
                     style: TextStyle(
-                      color: Color(0xFF6edbae),
+                      color: const Color(0xFF6edbae),
                       fontSize: getRelativeScreenWidth(28),
                       fontWeight: FontWeight.bold,
                     ),
@@ -105,7 +106,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                   password: passwordController.text,
                                 );
                                 user = userCredential.user;
-                                print('user credencials ${user}');
+                                if (kDebugMode) {
+                                  print('user credencials $user');
+                                }
                                 setState(() {
                                   circular = false;
                                 });
@@ -152,7 +155,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             }
                           },
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         circular
                             ? const CircularProgressIndicator()
                             : const Text(''),

@@ -31,7 +31,7 @@ class _AddTipImageState extends State<AddTipImage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Plant Image"),
+          title: const Text("Tips Image"),
         ),
         body: Container(
           alignment: Alignment.center,
@@ -74,39 +74,6 @@ class _AddTipImageState extends State<AddTipImage> {
               ),
               Container(
                 height: 40.0,
-              ),
-
-              /// get image from camera
-              TextButton(
-                style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFF58AF8B),
-                    foregroundColor: Colors.white),
-                onPressed: () async {
-                  // ignore: deprecated_member_use
-                  image =
-                      // ignore: deprecated_member_use
-                      await imagePicker.getImage(source: ImageSource.camera);
-                  var file = File(image?.path ?? "");
-
-                  if (image != null) {
-                    /// Upload to Firebase
-                    var snapshot = await fs.ref().child('images').putFile(file);
-                    var downloadUrl = await snapshot.ref.getDownloadURL();
-                    if (downloadUrl != "") {
-                      // ignore: use_build_context_synchronously
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  AddTips(url: downloadUrl)));
-                    }
-                  } else {
-
-                        // ignore: use_build_context_synchronously
-                        snackBar(context,"Error");
-                  }
-                },
-                child: const Text("FROM CAMERA"),
               )
             ],
           ),

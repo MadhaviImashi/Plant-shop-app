@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plant_shop_app/helper/constants.dart';
 import 'package:plant_shop_app/screens/profile/profile_screen.dart';
 import 'package:plant_shop_app/helper/size_config.dart';
 
@@ -45,7 +44,7 @@ class _HelpCentrePageState extends State<HelpCentrePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Help Center"),
+        title: const Text("Help Center"),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -57,74 +56,72 @@ class _HelpCentrePageState extends State<HelpCentrePage> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: getRelativeScreenWidth(26)),
-        child: Container(
-          child: Center(
-            child: LimitedBox(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.05),
-                  const Text(
-                    'Call Us',
-                    style: TextStyle(
+        child: Center(
+          child: LimitedBox(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: SizeConfig.screenHeight * 0.05),
+                const Text(
+                  'Call Us',
+                  style: TextStyle(
+                    color: Color(0xFF58AF8B),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.phone,
                       color: Color(0xFF58AF8B),
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.phone,
-                        color: Color(0xFF58AF8B),
-                      ),
-                      const SizedBox(width: 7.0),
-                      const Text(
-                        '123-456-7890',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 97, 96, 96),
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                      const SizedBox(width: 7.0),
-                      GestureDetector(
-                        onTap: () {
-                          // Implement call functionality here
-                        },
-                        child: const Icon(
-                          Icons.call,
-                          color: Color(0xFF58AF8B),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: SizeConfig.screenHeight * 0.05),
-                  const Text(
-                    'About Us',
-                    style: TextStyle(
-                      color: Color(0xFF58AF8B),
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Container(
-                    padding: EdgeInsets.all(18.0),
-                    color: Color.fromARGB(255, 229, 246, 241),
-                    child: const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                      textAlign: TextAlign.justify,
+                    const SizedBox(width: 7.0),
+                    const Text(
+                      '123-456-7890',
                       style: TextStyle(
                         color: Color.fromARGB(255, 97, 96, 96),
                         fontSize: 16.0,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
+                    const SizedBox(width: 7.0),
+                    GestureDetector(
+                      onTap: () {
+                        // Implement call functionality here
+                      },
+                      child: const Icon(
+                        Icons.call,
+                        color: Color(0xFF58AF8B),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.05),
+                const Text(
+                  'About Us',
+                  style: TextStyle(
+                    color: Color(0xFF58AF8B),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 8.0),
+                Container(
+                  padding: const EdgeInsets.all(18.0),
+                  color: const Color.fromARGB(255, 229, 246, 241),
+                  child: const Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 97, 96, 96),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

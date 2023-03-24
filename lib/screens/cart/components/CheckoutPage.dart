@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plant_shop_app/helper/constants.dart';
-import 'package:plant_shop_app/helper/enums.dart';
+
 import 'package:plant_shop_app/helper/size_config.dart';
 import 'OrdersPage.dart';
-import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
+
 import '../../../components/default_button.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -12,7 +12,7 @@ class CheckoutPage extends StatefulWidget {
   _CheckoutPageState createState() => _CheckoutPageState();
   final double totalPrice;
   List<String> itemName = [];
-  CheckoutPage({required this.totalPrice, required this.itemName});
+  CheckoutPage({super.key, required this.totalPrice, required this.itemName});
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
@@ -26,7 +26,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cash on Delivery Details'),
+        title: const Text('Cash on Delivery Details'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,17 +38,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 RichText(
                   text: TextSpan(
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 19.0,
                     ),
                     children: [
-                      WidgetSpan(
+                      const WidgetSpan(
                           child: Divider(
                         height: 10,
                         thickness: 4,
                         color: kPrimaryColor,
                       )),
-                      TextSpan(
+                      const TextSpan(
                         text: 'Items Ordered:  ',
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
@@ -56,15 +56,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ),
                       ),
                       TextSpan(
-                        text: '${widget.itemName.join(", ")}',
-                        style: TextStyle(
+                        text: widget.itemName.join(", "),
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 19.0,
                           color: kPrimaryColor,
                         ),
                       ),
-                      TextSpan(text: '\n'),
-                      TextSpan(
+                      const TextSpan(text: '\n'),
+                      const TextSpan(
                         text: 'Total Price:  ',
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
@@ -73,13 +73,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ),
                       TextSpan(
                         text: '${widget.totalPrice}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 19.0,
                           color: kPrimaryColor,
                         ),
                       ),
-                      WidgetSpan(
+                      const WidgetSpan(
                           child: Divider(
                         height: 10,
                         thickness: 4,
@@ -90,7 +90,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
                 SizedBox(height: getRelativeScreenHeight(30)),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Enter delivery name",
                     labelText: 'Name',
                   ),
@@ -106,7 +106,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
                 SizedBox(height: getRelativeScreenHeight(8)),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Enter delivery address",
                     labelText: 'Address',
                   ),
@@ -122,7 +122,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
                 SizedBox(height: getRelativeScreenHeight(8)),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Enter delivery phone number",
                     labelText: 'Phone Number',
                   ),
@@ -138,7 +138,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 ),
                 SizedBox(height: getRelativeScreenHeight(8)),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Email',
                     hintText: "Enter delivery email",
                   ),
@@ -152,7 +152,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     _email = value!;
                   },
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 SizedBox(height: getRelativeScreenHeight(5)),
                 DefaultButton(
                   text: "Submit Order",
@@ -169,13 +169,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         "created_at": DateTime.now(),
                       }).then((value) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Order placed successfully")),
+                          const SnackBar(content: Text("Order placed successfully")),
                         );
 
                         _formKey.currentState!.reset();
                       }).catchError((error) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Failed to place order")),
+                          const SnackBar(content: Text("Failed to place order")),
                         );
                       });
                     }
@@ -196,7 +196,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         ),
       ),
-      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+
     );
   }
 }

@@ -7,11 +7,10 @@ import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
 import 'package:plant_shop_app/screens/tips/admin_view.dart';
 import 'package:plant_shop_app/screens/tips/camera_image.dart';
-import 'package:plant_shop_app/screens/tips/components/add_form.dart';
 import 'package:plant_shop_app/screens/tips/customer_view.dart';
 import 'package:plant_shop_app/theme.dart';
 import 'firebase_options.dart';
-import 'package:plant_shop_app/screens/cart/components/CartPage.dart';
+
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -34,21 +33,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Charming Flora',
       theme: theme(),
       home: SignInScreen(),
       routes: {
         '/login': (BuildContext context) => SignInScreen(),
         '/register': (BuildContext context) => SignUpScreen(),
-        // '/home': (BuildContext context) => const UserHome(user: null),
-        // '/favorites': (BuildContext context) =>
-        //     const WishlistScreen(user: null),
-        '/cart': (BuildContext context) => CartPage(),
-        '/tips': (BuildContext context) => AddTipImage(),
+        '/tips': (BuildContext context) => const AddTipImage(),
         '/view_tips': (BuildContext context) => const AdminTipHome(),
         '/customer_tips': (BuildContext context) => const CustomerTipHome(),
-        // '/profile': (BuildContext context) => const ProfileScreen(user: null),
-        // '/profile-update': (BuildContext context) => UpdateProfileScreen(),
         '/admin_home': (BuildContext context) => const AdminHome(),
         '/add_plant': (BuildContext context) => const AddImage(),
       },

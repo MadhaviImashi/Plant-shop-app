@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../update_plants.dart';
 
-//display plants list
+///display plants list
 class PlantList extends StatefulWidget {
   const PlantList({super.key});
   @override

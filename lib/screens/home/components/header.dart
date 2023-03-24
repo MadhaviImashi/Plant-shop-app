@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../helper/constants.dart';
 
+///header below app bar
 class Header extends StatelessWidget {
   const Header(this.size, {super.key});
   final Size size;

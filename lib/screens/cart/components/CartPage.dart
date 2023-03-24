@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:plant_shop_app/components/coustom_bottom_nav_bar.dart';
 import 'package:plant_shop_app/helper/enums.dart';
+
 import '../models/PlantModel.dart';
 import 'CheckoutPage.dart';
 import '../../../components/default_button.dart';
@@ -121,7 +122,7 @@ class _CartPageState extends State<CartPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Price: \$${item['price'].toStringAsFixed(2)}'),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(plant.description),
                   ],
                 ),
@@ -129,31 +130,31 @@ class _CartPageState extends State<CartPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.remove),
+                      icon: const Icon(Icons.remove),
                       onPressed: () => _updateCartItems(
                           plant, item['name'], item['count'] - 1),
                     ),
                     Text(item['count'].toString()),
                     IconButton(
-                      icon: Icon(Icons.add),
+                      icon: const Icon(Icons.add),
                       onPressed: () => _updateCartItems(
                           plant, item['name'], item['count'] + 1),
                     ),
                     IconButton(
-                      icon: Icon(Icons.delete),
+                      icon: const Icon(Icons.delete),
                       onPressed: () =>
                           _removeItemFromCart(plant.id, item['name']),
                     ),
                   ],
                 ),
               ),
-              Divider(),
+              const Divider(),
             ],
           );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: 200,
         child: Column(
           children: [
@@ -161,11 +162,11 @@ class _CartPageState extends State<CartPage> {
             // ...
             Container(
               width: 350,
-              padding: EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: [
                   Text('Total: \$${_totalPrice.toStringAsFixed(2)}'),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   DefaultButton(
                     text: "Checkout",
                     press: () {
