@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../update_tips.dart';
 
 
-//Display tips list
+//Retrieve the tips list
 class TipList extends StatefulWidget {
   const TipList({super.key});
   @override
@@ -27,7 +27,7 @@ class TipListState extends State<TipList> {
               shrinkWrap: true,
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
-                    document.data()! as Map<String, dynamic>;
+                document.data()! as Map<String, dynamic>;
 
                 Color tipColor = const Color.fromARGB(255, 82, 243, 33);
 
@@ -41,32 +41,24 @@ class TipListState extends State<TipList> {
                       BoxShadow(
                         color: Colors.black,
                         blurRadius: 5.0,
-                        offset: Offset(0, 5), // shadow direction: bottom right
+                        offset: Offset(0, 5),
                       ),
                     ],
                   ),
                   child: ListTile(
-                    leading: Container(
-                      width: 100,
-                      height: 100,
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
-                      alignment: Alignment.center,
-                      child: Image.network(data['img'], fit: BoxFit.fill),
-                    ),
                     title: Text(data['name'],
-                                style: const TextStyle(fontSize: 16)),
-                    // subtitle: Text(data['description']),
+                        style: const TextStyle(fontSize: 16)),
                     subtitle: Container(
-                        child: (Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(data['description'],
-                                style: const TextStyle(fontSize: 14)),
-                            Text(data['type']),
-                          ],
-                        )),
-                      ),
-                  
+                      child: (Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(data['description'],
+                              style: const TextStyle(fontSize: 14)),
+                          Text(data['type']),
+                        ],
+                      )),
+                    ),
+
                     isThreeLine: true,
                     trailing: PopupMenuButton(
                       itemBuilder: (context) {
@@ -78,16 +70,15 @@ class TipListState extends State<TipList> {
                               style: TextStyle(fontSize: 13.0),
                             ),
                             onTap: () => Future(
-                             
-                              ()=>Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UpdateTips(
-                                          id: document.id,
-                                          name: data['name'],
-                                          url: data['img'],
-                                          type: data['type'],
-                                          description: data['description'])))
+
+                                    ()=>Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UpdateTips(
+                                            id: document.id,
+                                            name: data['name'],
+                                            description: data['description'],
+                                            type: data['type'])))
                             ),
                           ),
                           PopupMenuItem(
@@ -115,7 +106,7 @@ class TipListState extends State<TipList> {
   }
 }
 
-//delete  tip
+//delete a tip
 void delete(String tipId) async {
   var collection = FirebaseFirestore.instance.collection('Tips');
   collection.doc(tipId).delete();
