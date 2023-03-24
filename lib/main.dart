@@ -5,8 +5,8 @@ import 'package:plant_shop_app/screens/plants/admin_view.dart';
 import 'package:plant_shop_app/screens/plants/camera_image.dart';
 import 'package:plant_shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:plant_shop_app/screens/sign_up/sign_up_screen.dart';
+import 'package:plant_shop_app/screens/tips/add_tips.dart';
 import 'package:plant_shop_app/screens/tips/admin_view.dart';
-import 'package:plant_shop_app/screens/tips/camera_image.dart';
 import 'package:plant_shop_app/screens/tips/components/add_form.dart';
 import 'package:plant_shop_app/screens/tips/customer_view.dart';
 import 'package:plant_shop_app/theme.dart';
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         // '/favorites': (BuildContext context) =>
         //     const WishlistScreen(user: null),
         '/cart': (BuildContext context) => CartPage(),
-        '/tips': (BuildContext context) => AddTipImage(),
+        '/tips': (BuildContext context) => AddTips(),
         '/view_tips': (BuildContext context) => const AdminTipHome(),
         '/customer_tips': (BuildContext context) => const CustomerTipHome(),
         // '/profile': (BuildContext context) => const ProfileScreen(user: null),

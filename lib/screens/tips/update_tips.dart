@@ -3,20 +3,19 @@ import '../../components/admin_nav.dart';
 import '../../helper/admin_enum.dart';
 import 'components/update_form.dart';
 
-///Update tip data
+
+///Update existing tip details
 class UpdateTips extends StatefulWidget {
   final String id;
-  final String url;
   final String name;
-  final String type;
   final String description;
+  final String type;
 
   const UpdateTips(
       {super.key,
-      required this.url,
       required this.name,
-      required this.type,
       required this.description,
+      required this.type,
       required this.id});
 
   @override
@@ -28,11 +27,10 @@ class _UpdateTipsState extends State<UpdateTips> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Update Tip"),
+        title: const Text("Update Tip Details"),
       ),
       body: SingleChildScrollView(
           child: Column(children: [
-            Image.network(widget.url, fit: BoxFit.fill),
         Card(
             semanticContainer: true,
             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -44,7 +42,6 @@ class _UpdateTipsState extends State<UpdateTips> {
             child: UpdateForm(
                 id: widget.id,
                 name: widget.name,
-                url: widget.url,
                 type: widget.type,
                 description: widget.description))
       ])),

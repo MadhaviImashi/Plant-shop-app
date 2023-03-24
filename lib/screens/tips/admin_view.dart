@@ -1,12 +1,11 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-
 import '../../components/admin_nav.dart';
 import '../../helper/admin_enum.dart';
 import './components/view_card.dart';
 
 
-//Admin home view
+//Admin home view for tips
 class AdminTipHome extends StatefulWidget {
   const AdminTipHome({super.key});
   @override

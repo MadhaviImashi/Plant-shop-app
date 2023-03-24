@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-
 import '../update_Tips.dart';
 
-//Display tips list
+
+//Retrieve the tips list
 class TipList extends StatefulWidget {
   const TipList({super.key});
   @override
@@ -42,21 +41,13 @@ class TipListState extends State<TipList> {
                       BoxShadow(
                         color: Colors.black,
                         blurRadius: 5.0,
-                        offset: Offset(0, 5), // shadow direction: bottom right
+                        offset: Offset(0, 5), 
                       ),
                     ],
                   ),
                   child: ListTile(
-                    leading: Container(
-                      width: 100,
-                      height: 100,
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
-                      alignment: Alignment.center,
-                      child: Image.network(data['img'], fit: BoxFit.fill),
-                    ),
                     title: Text(data['name'],
                                 style: const TextStyle(fontSize: 16)),
-                    // subtitle: Text(data['description']),
                     subtitle: Container(
                         child: (Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,9 +77,8 @@ class TipListState extends State<TipList> {
                                       builder: (context) => UpdateTips(
                                           id: document.id,
                                           name: data['name'],
-                                          url: data['img'],
-                                          type: data['type'],
-                                          description: data['description'])))
+                                          description: data['description'],
+                                          type: data['type'])))
                             ),
                           ),
                           PopupMenuItem(
@@ -116,7 +106,7 @@ class TipListState extends State<TipList> {
   }
 }
 
-//delete  tip
+//delete a tip
 void delete(String tipId) async {
   var collection = FirebaseFirestore.instance.collection('Tips');
   collection.doc(tipId).delete();
