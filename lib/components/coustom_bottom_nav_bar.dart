@@ -89,16 +89,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       builder: (context) => WishlistScreen(user: _currentUser)))
                 },
               ),
-              IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Question mark.svg",
-                  // ignore: deprecated_member_use
-                  color: MenuState.tips == _selectedMenuState
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
-              ),
+              // IconButton(
+              //   icon: SvgPicture.asset(
+              //     "assets/icons/Question mark.svg",
+              //     // ignore: deprecated_member_use
+              //     color: MenuState.tips == _selectedMenuState
+              //         ? kPrimaryColor
+              //         : inActiveIconColor,
+              //   ),
+              //   onPressed: () => Navigator.pushNamed(context, '/login'),
+              // ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/Cart Icon.svg",
@@ -111,6 +111,26 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => CartScreen(user: _currentUser)))
                 },
+              ),
+              // IconButton(
+              //   icon: SvgPicture.asset(
+              //     "assets/icons/Question mark.svg",
+              //     // ignore: deprecated_member_use
+              //     color: MenuState.tips == _selectedMenuState
+              //         ? kPrimaryColor
+              //         : inActiveIconColor,
+              //   ),
+              //   onPressed: () => Navigator.pushNamed(context, '/tips'),
+              // ),
+              IconButton(
+                icon: SvgPicture.asset(
+                  "assets/icons/Question mark.svg",
+                  // ignore: deprecated_member_use
+                  color: MenuState.tips == _selectedMenuState
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.pushNamed(context, '/customer_tips'),
               ),
               IconButton(
                 icon: SvgPicture.asset(

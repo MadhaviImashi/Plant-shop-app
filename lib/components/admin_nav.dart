@@ -54,7 +54,7 @@ class AdminNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/login'),
+                onPressed: () => Navigator.pushNamed(context, '/tips'),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -65,6 +65,16 @@ class AdminNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
                 onPressed: () => Navigator.pushNamed(context, '/add_plant'),
+              ),
+              IconButton(
+                icon: SvgPicture.asset(
+                  "assets/icons/Search Icon.svg",
+                  // ignore: deprecated_member_use
+                  color: AdminState.tips == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.pushNamed(context, '/view_tips'),
               ),
             ],
           )),
