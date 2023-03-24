@@ -1,7 +1,7 @@
 # plant_shop_app
 
-Group Members
--Hapugala H.A.V.V. - IT19974910 <br>
+**Group Members**
+<br>-Hapugala H.A.V.V. - IT19974910 <br>
 -Uyanahewa M.I.R. - IT19961422 <br>
 -Thilakarathne M.H.K.T.S. - IT19972244 <br>
 -Dasanayake N.A.C.H. - IT19974774 <br>
